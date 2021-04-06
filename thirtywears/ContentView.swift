@@ -45,25 +45,36 @@ struct ContentView: View {
             LazyVGrid(
                 columns: columns,
                 alignment: .center,
-                spacing: 10,
+//                spacing: 10,
                 pinnedViews: [.sectionHeaders]) {
                 
                 Section(header:
-                            Text("\(countOfItems)/\(clothing.count) sustainable").font(.headline)) {
+                            
+                            Text("\(countOfItems)/\(clothing.count) sustainable")
+                            .font(.headline)
+                            .padding(10)
+                            .frame(maxWidth: .infinity)
+                            .background(Color(.purple))
+                            .foregroundColor(.white)
+                            .shadow(color: .gray, radius: 1)
+                            
+                            ) {
                 ForEach(clothing) { item in
-                    VStack(alignment: .leading) {
+                    VStack {
                         Image(uiImage: UIImage(data: item.image ?? self.image)!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .cornerRadius(15)
+                            .shadow(color: .gray, radius: 1)
                             .onTapGesture {
                                 item.wears += 1
                             }
                         Text("\(item.type): \(item.wears)")
                             .foregroundColor(item.wears < 5 ? Color.red : Color.black)
+                            .font(.caption)
 
                     }
-                    .padding()
+                    .padding(6)
                 }
             }
             }
@@ -73,8 +84,9 @@ struct ContentView: View {
             .navigationBarItems(trailing: Button(action: {
                 showItemSheet = true
                 }, label: {
-                    Image(systemName: "plus.circle")
+                    Image(systemName: "camera.fill")
                         .imageScale(.large)
+                        .foregroundColor(.purple)
                 }))
             .sheet(isPresented: $showItemSheet) {
                     ItemSheet()

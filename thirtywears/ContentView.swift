@@ -11,67 +11,97 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @FetchRequest(entity: Clothing.entity(), sortDescriptors: [])
 
+    var clothing: FetchedResults<Clothing>
+    @State var showItemSheet = false
+    @State var image: Data = .init(count: 0)
+    
+    var countOfItems: Int {
+      getCount()
+     }
+    
+    private var columns: [GridItem] = [
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
+
+    
+//    var sustainabilityCount:Int {
+//            get {
+//
+//                if clothing[0].wears > 4 {
+//                return 1
+//                }
+//                else {
+//                    return 0
+//                }
+//            }
+//        }
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        NavigationView {
+            ScrollView {
+            LazyVGrid(
+                columns: columns,
+                alignment: .center,
+                spacing: 10,
+                pinnedViews: [.sectionHeaders]) {
+                
+                Section(header:
+                            Text("\(countOfItems)/\(clothing.count) sustainable").font(.headline)) {
+                ForEach(clothing) { item in
+                    VStack(alignment: .leading) {
+                        Image(uiImage: UIImage(data: item.image ?? self.image)!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(15)
+                            .onTapGesture {
+                                item.wears += 1
+                            }
+                        Text("\(item.type): \(item.wears)")
+                            .foregroundColor(item.wears < 5 ? Color.red : Color.black)
+
+                    }
+                    .padding()
+                }
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
-    }
+                .listStyle(PlainListStyle())
+            .navigationTitle("My Wardrobe")
+            .navigationBarItems(trailing: Button(action: {
+                showItemSheet = true
+                }, label: {
+                    Image(systemName: "plus.circle")
+                        .imageScale(.large)
+                }))
+            .sheet(isPresented: $showItemSheet) {
+                    ItemSheet()
+                }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+func getCount() -> Int {
+   var countOfItems: Int = 0
+   let context = PersistenceController.shared.container.viewContext
+   
+   let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
+   
+   clothingFetchRequest.predicate = NSPredicate(format: "wears > %d", 4)
+   
+   do {
+      countOfItems = try context.count(for: clothingFetchRequest)
+      print (countOfItems)
+   }
+   catch {
+      print (error)
+   }
+   return countOfItems
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

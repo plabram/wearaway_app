@@ -5,6 +5,7 @@
 //  Created by Penelope Labram on 6/4/21.
 //
 
+
 import CoreData
 
 struct PersistenceController {
@@ -14,8 +15,10 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = Clothing(context: viewContext)
+            newItem.id = UUID()
+            newItem.type = "dress"
+            newItem.wears = 0
         }
         do {
             try viewContext.save()

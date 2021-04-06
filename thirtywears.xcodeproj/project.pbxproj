@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		690A0453261D08E800CD5DDB /* OnBoardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690A0452261D08E800CD5DDB /* OnBoardScreen.swift */; };
+		690A0455261D0E1700CD5DDB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690A0454261D0E1700CD5DDB /* Home.swift */; };
 		69612279261CE663000CA8C5 /* thirtywearsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69612278261CE663000CA8C5 /* thirtywearsApp.swift */; };
 		6961227B261CE663000CA8C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961227A261CE663000CA8C5 /* ContentView.swift */; };
 		6961227D261CE666000CA8C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6961227C261CE666000CA8C5 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		690A0452261D08E800CD5DDB /* OnBoardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardScreen.swift; sourceTree = "<group>"; };
+		690A0454261D0E1700CD5DDB /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		69612275261CE663000CA8C5 /* thirtywears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thirtywears.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69612278261CE663000CA8C5 /* thirtywearsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirtywearsApp.swift; sourceTree = "<group>"; };
 		6961227A261CE663000CA8C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 				6961228D261CE6CF000CA8C5 /* Clothing+CoreDataProperties.swift */,
 				69612278261CE663000CA8C5 /* thirtywearsApp.swift */,
 				6961227A261CE663000CA8C5 /* ContentView.swift */,
+				690A0454261D0E1700CD5DDB /* Home.swift */,
+				690A0452261D08E800CD5DDB /* OnBoardScreen.swift */,
 				6961227C261CE666000CA8C5 /* Assets.xcassets */,
 				69612281261CE666000CA8C5 /* Persistence.swift */,
 				69612292261CE6E7000CA8C5 /* ImagePicker.swift */,
@@ -158,6 +164,8 @@
 			files = (
 				69612282261CE666000CA8C5 /* Persistence.swift in Sources */,
 				6961227B261CE663000CA8C5 /* ContentView.swift in Sources */,
+				690A0455261D0E1700CD5DDB /* Home.swift in Sources */,
+				690A0453261D08E800CD5DDB /* OnBoardScreen.swift in Sources */,
 				69612291261CE6DF000CA8C5 /* ItemSheet.swift in Sources */,
 				6961228E261CE6CF000CA8C5 /* Clothing+CoreDataClass.swift in Sources */,
 				69612285261CE666000CA8C5 /* thirtywears.xcdatamodeld in Sources */,

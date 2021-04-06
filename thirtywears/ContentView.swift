@@ -16,6 +16,7 @@ struct ContentView: View {
     var clothing: FetchedResults<Clothing>
     @State var showItemSheet = false
     @State var image: Data = .init(count: 0)
+    @State var goToHome = false
     
     var countOfItems: Int {
       getCount()
@@ -40,70 +41,85 @@ struct ContentView: View {
 //        }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-            LazyVGrid(
-                columns: columns,
-                alignment: .center,
-//                spacing: 10,
-                pinnedViews: [.sectionHeaders]) {
-                
-                Section(header:
-                            
-                            Text("\(countOfItems)/\(clothing.count) sustainable")
-                            .font(.headline)
-                            .padding(10)
-                            .frame(maxWidth: .infinity)
-                            .background(Color(.purple))
-                            .foregroundColor(.white)
-                            .shadow(color: .gray, radius: 1)
-                            
-                            ) {
-                ForEach(clothing) { item in
-                    VStack {
-                        Image(uiImage: UIImage(data: item.image ?? self.image)!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(15)
-                            .shadow(color: .gray, radius: 1)
-                            .onTapGesture {
-                                item.wears += 1
-                            }
-                        Text("\(item.type): \(item.wears)")
-                            .foregroundColor(item.wears < 5 ? Color.red : Color.black)
-                            .font(.caption)
-
-                    }
-                    .padding(6)
-                }
+        
+        ZStack{
+            if goToHome{
+                Home()
             }
+            else {
+                OnBoardScreen()
             }
         }
-                .listStyle(PlainListStyle())
-            .navigationTitle("My Wardrobe")
-            .navigationBarItems(trailing: Button(action: {
-                showItemSheet = true
-                }, label: {
-                    Image(systemName: "camera.fill")
-                        .imageScale(.large)
-                        .foregroundColor(.purple)
-                }))
-            .sheet(isPresented: $showItemSheet) {
-                    ItemSheet()
-                }
-
-        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("Success")), perform: {_ in
+            withAnimation{self.goToHome = true}
+            
+        })
+        
+        
+//        NavigationView {
+//            ScrollView {
+//            LazyVGrid(
+//                columns: columns,
+//                alignment: .center,
+////                spacing: 10,
+//                pinnedViews: [.sectionHeaders]) {
+//
+//                Section(header:
+//
+//                            Text("\(countOfItems)/\(clothing.count) sustainable")
+//                            .font(.headline)
+//                            .padding(10)
+//                            .frame(maxWidth: .infinity)
+//                            .background(Color(.purple))
+//                            .foregroundColor(.white)
+//                            .shadow(color: .gray, radius: 1)
+//
+//                            ) {
+//                ForEach(clothing) { item in
+//                    VStack {
+//                        Image(uiImage: UIImage(data: item.image ?? self.image)!)
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .cornerRadius(15)
+//                            .shadow(color: .gray, radius: 1)
+//                            .onTapGesture {
+//                                item.wears += 1
+//                            }
+//                        Text("\(item.type): \(item.wears)")
+//                            .foregroundColor(item.wears < 5 ? Color.red : Color.black)
+//                            .font(.caption)
+//
+//                    }
+//                    .padding(6)
+//                }
+//            }
+//            }
+//        }
+//                .listStyle(PlainListStyle())
+//            .navigationTitle("My Wardrobe")
+//            .navigationBarItems(trailing: Button(action: {
+//                showItemSheet = true
+//                }, label: {
+//                    Image(systemName: "camera.fill")
+//                        .imageScale(.large)
+//                        .foregroundColor(.purple)
+//                }))
+//            .sheet(isPresented: $showItemSheet) {
+//                    ItemSheet()
+//                }
+//
+//        }
     }
 }
 
 func getCount() -> Int {
    var countOfItems: Int = 0
    let context = PersistenceController.shared.container.viewContext
-   
+
    let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
-   
+
    clothingFetchRequest.predicate = NSPredicate(format: "wears > %d", 4)
-   
+
    do {
       countOfItems = try context.count(for: clothingFetchRequest)
       print (countOfItems)
@@ -112,11 +128,4 @@ func getCount() -> Int {
       print (error)
    }
    return countOfItems
-}
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
 }

@@ -12,20 +12,20 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(entity: Clothing.entity(), sortDescriptors: [])
-
     var clothing: FetchedResults<Clothing>
-    @State var showItemSheet = false
-    @State var image: Data = .init(count: 0)
+    
+//    @State var showItemSheet = false
+//    @State var image: Data = .init(count: 0)
     @State var goToHome = false
     
-    var countOfItems: Int {
-      getCount()
-     }
+//    var countOfItems: Int {
+//      getCount()
+//     }
     
-    private var columns: [GridItem] = [
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
+//    private var columns: [GridItem] = [
+//            GridItem(.flexible()),
+//            GridItem(.flexible())
+//        ]
 
     
 //    var sustainabilityCount:Int {

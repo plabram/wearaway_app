@@ -14,37 +14,36 @@ struct OnBoardScreen: View {
     
     var body: some View {
         ZStack{
-            Color(.purple)
-                .ignoresSafeArea(.all, edges: .all)
-            
-            VStack{
-                Spacer(minLength: 0)
+            VStack(alignment: .center){
+                Spacer()
                 Text("30 Wears")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .foregroundColor(.purple)
-                Text("The 30 wears rule: 'To work off the clothes’ carbon emissions created during production, you need to wear it 30 times' - Georgina Wilson-Powell")
+                Text("To work off clothes’ carbon emissions created during production, you need to wear them 30 times.")
+                    .font(.headline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.purple)
+                    .foregroundColor(.gray)
                     .padding()
                     .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
                 Image("clothes")
-                    .padding()
-                Spacer(minLength: 0)
-                
+                    .resizable()
+                    .frame(width: maxWidth + 50, height: maxWidth + 50)
+                Spacer()
                 
                 ZStack {
                     Capsule()
-                        .fill(Color.white.opacity(0.5))
+                        .fill(Color.purple.opacity(0.5))
                     
-                    Text("SWIPE TO START")
+                    Text("START")
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                         .padding(.leading,30)
                    
                     HStack {
                     Capsule()
-                        .fill(Color(.blue))
+                        .fill(Color(.purple))
                         .frame(width: calculateWidth()+65)
                         Spacer(minLength: 0)
                     }
@@ -58,7 +57,7 @@ struct OnBoardScreen: View {
                         .foregroundColor(.white)
                         .offset(x: 5)
                         .frame(width: 65, height: 65)
-                        .background(Color(.blue))
+                        .background(Color(.purple))
                         .clipShape(Circle())
                         .offset(x: offset)
                         .gesture(DragGesture().onChanged(onChanged(value:)).onEnded(onEnd(value:)))

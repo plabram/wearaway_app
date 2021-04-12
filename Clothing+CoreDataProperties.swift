@@ -18,11 +18,86 @@ extension Clothing {
 
     @NSManaged public var id: UUID?
     @NSManaged public var wears: Int16
+    @NSManaged public var cost: Int16
     @NSManaged public var type: String
     @NSManaged public var image: Data
+    public var costPerWear: String {
+        get {
+            if (self.cost > 0 && self.wears > 0) {
+                let calcValue = cost / wears
+                let newValue = String("\(calcValue)")
+                return newValue
+            }
+            else if (self.cost > 0 && self.wears == 0) {
+                return "0"
+            }
+            else {
+                return "add cost"
+            }
+        }
+        set {
+            self.costPerWear = newValue
+        }
+    }
 
 }
 
 extension Clothing : Identifiable {
 
 }
+
+func getCount(threshold: Int) -> Int {
+   var countOfItems: Int = 0
+   let context = PersistenceController.shared.container.viewContext
+
+   let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
+
+   clothingFetchRequest.predicate = NSPredicate(format: "wears >= %d", threshold)
+
+   do {
+      countOfItems = try context.count(for: clothingFetchRequest)
+      print (countOfItems)
+   }
+   catch {
+      print (error)
+   }
+   return countOfItems
+}
+
+
+func getTypeCount(threshold: Int, itemType: String) -> Int {
+   var countOfItems: Int = 0
+   let context = PersistenceController.shared.container.viewContext
+
+   let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
+
+   clothingFetchRequest.predicate = NSPredicate(format: "wears >= %d AND type == %@", threshold, "\(itemType)")
+
+   do {
+      countOfItems = try context.count(for: clothingFetchRequest)
+      print (countOfItems)
+   }
+   catch {
+      print (error)
+   }
+   return countOfItems
+}
+
+func getTotalType(itemType: String) -> Int {
+   var countOfItems: Int = 0
+   let context = PersistenceController.shared.container.viewContext
+
+   let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
+
+   clothingFetchRequest.predicate = NSPredicate(format: "type == %@", "\(itemType)")
+
+   do {
+      countOfItems = try context.count(for: clothingFetchRequest)
+      print (countOfItems)
+   }
+   catch {
+      print (error)
+   }
+   return countOfItems
+}
+

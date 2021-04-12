@@ -13,38 +13,33 @@ struct ContentView: View {
 
     @FetchRequest(entity: Clothing.entity(), sortDescriptors: [])
     var clothing: FetchedResults<Clothing>
-    
-//    @State var showItemSheet = false
-//    @State var image: Data = .init(count: 0)
-    @State var goToHome = false
-    
-//    var countOfItems: Int {
-//      getCount()
-//     }
-    
-//    private var columns: [GridItem] = [
-//            GridItem(.flexible()),
-//            GridItem(.flexible())
-//        ]
+    var settings = Settings()
 
-    
-//    var sustainabilityCount:Int {
-//            get {
-//
-//                if clothing[0].wears > 4 {
-//                return 1
-//                }
-//                else {
-//                    return 0
-//                }
-//            }
-//        }
+    @State var goToHome = false
     
     var body: some View {
         
         ZStack{
             if goToHome{
-                Home()
+                TabView {
+                            Home()
+                                .tabItem {
+                                    Label("Menu", systemImage: "house")
+                                }
+                                .environmentObject(settings)
+
+                            Analytics()
+                                .tabItem {
+                                    Label("Analytics", systemImage: "sum")
+                                }
+                                .environmentObject(settings)
+                    
+                            Profile()
+                                .tabItem {
+                                    Label("Profile", systemImage: "person")
+                                }
+                                .environmentObject(settings)
+                }
             }
             else {
                 OnBoardScreen()
@@ -55,77 +50,7 @@ struct ContentView: View {
             
         })
         
-        
-//        NavigationView {
-//            ScrollView {
-//            LazyVGrid(
-//                columns: columns,
-//                alignment: .center,
-////                spacing: 10,
-//                pinnedViews: [.sectionHeaders]) {
-//
-//                Section(header:
-//
-//                            Text("\(countOfItems)/\(clothing.count) sustainable")
-//                            .font(.headline)
-//                            .padding(10)
-//                            .frame(maxWidth: .infinity)
-//                            .background(Color(.purple))
-//                            .foregroundColor(.white)
-//                            .shadow(color: .gray, radius: 1)
-//
-//                            ) {
-//                ForEach(clothing) { item in
-//                    VStack {
-//                        Image(uiImage: UIImage(data: item.image ?? self.image)!)
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .cornerRadius(15)
-//                            .shadow(color: .gray, radius: 1)
-//                            .onTapGesture {
-//                                item.wears += 1
-//                            }
-//                        Text("\(item.type): \(item.wears)")
-//                            .foregroundColor(item.wears < 5 ? Color.red : Color.black)
-//                            .font(.caption)
-//
-//                    }
-//                    .padding(6)
-//                }
-//            }
-//            }
-//        }
-//                .listStyle(PlainListStyle())
-//            .navigationTitle("My Wardrobe")
-//            .navigationBarItems(trailing: Button(action: {
-//                showItemSheet = true
-//                }, label: {
-//                    Image(systemName: "camera.fill")
-//                        .imageScale(.large)
-//                        .foregroundColor(.purple)
-//                }))
-//            .sheet(isPresented: $showItemSheet) {
-//                    ItemSheet()
-//                }
-//
-//        }
     }
 }
 
-func getCount() -> Int {
-   var countOfItems: Int = 0
-   let context = PersistenceController.shared.container.viewContext
 
-   let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
-
-   clothingFetchRequest.predicate = NSPredicate(format: "wears > %d", 4)
-
-   do {
-      countOfItems = try context.count(for: clothingFetchRequest)
-      print (countOfItems)
-   }
-   catch {
-      print (error)
-   }
-   return countOfItems
-}

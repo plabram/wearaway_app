@@ -19,6 +19,7 @@ struct PersistenceController {
             newItem.id = UUID()
             newItem.type = "dress"
             newItem.wears = 0
+            newItem.cost = 5
         }
         do {
             try viewContext.save()

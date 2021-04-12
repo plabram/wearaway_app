@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var settings: Settings
 
     @FetchRequest(entity: Clothing.entity(), sortDescriptors: [])
 
@@ -18,41 +19,15 @@ struct Home: View {
     @State var goToHome = false
     
     var countOfItems: Int {
-      getCount()
+        getCount(threshold: settings.settingsThreshold)
      }
     
     private var columns: [GridItem] = [
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
-
-    
-//    var sustainabilityCount:Int {
-//            get {
-//
-//                if clothing[0].wears > 4 {
-//                return 1
-//                }
-//                else {
-//                    return 0
-//                }
-//            }
-//        }
     
     var body: some View {
-        
-//        ZStack{
-//            if goToHome{
-//                Text("Home Screen")
-//            }
-//            else {
-//                OnBoardScreen()
-//            }
-//        }
-//        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("Success")), perform: {_ in
-//            withAnimation{self.goToHome = true}
-//
-//        })
         
         NavigationView {
             ScrollView {
@@ -81,9 +56,18 @@ struct Home: View {
                             .shadow(color: .gray, radius: 1)
                             .onTapGesture {
                                 item.wears += 1
+                                do {
+                                        try viewContext.save()
+                                        print("Taps saved.")
+                                    } catch {
+                                        print(error.localizedDescription)
+                                    }
                             }
                         Text("\(item.type): \(item.wears)")
-                            .foregroundColor(item.wears < 5 ? Color.red : Color.black)
+                            .foregroundColor(item.wears < settings.settingsThreshold ? Color.red : Color.black)
+                            .font(.caption)
+                        Text("Cost per wear: \(item.costPerWear) €")
+                            .foregroundColor(item.cost > 0 ? Color.black : Color.white)
                             .font(.caption)
 
                     }
@@ -102,7 +86,7 @@ struct Home: View {
                         .foregroundColor(.purple)
                 }))
             .sheet(isPresented: $showItemSheet) {
-                    ItemSheet()
+                ItemSheet(settings: settings.self)
                 }
 
         }

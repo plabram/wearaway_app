@@ -13,6 +13,7 @@
 		69611EDF262367D500F1121C /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EDE262367D500F1121C /* Analytics.swift */; };
 		69611EE12623694C00F1121C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EE02623694C00F1121C /* Settings.swift */; };
 		69611EE326236FDE00F1121C /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EE226236FDE00F1121C /* About.swift */; };
+		69611EE52624870A00F1121C /* SyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EE42624870A00F1121C /* SyncView.swift */; };
 		69612279261CE663000CA8C5 /* thirtywearsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69612278261CE663000CA8C5 /* thirtywearsApp.swift */; };
 		6961227B261CE663000CA8C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961227A261CE663000CA8C5 /* ContentView.swift */; };
 		6961227D261CE666000CA8C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6961227C261CE666000CA8C5 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		69611EDE262367D500F1121C /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		69611EE02623694C00F1121C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		69611EE226236FDE00F1121C /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
+		69611EE42624870A00F1121C /* SyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncView.swift; sourceTree = "<group>"; };
 		69612275261CE663000CA8C5 /* thirtywears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thirtywears.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69612278261CE663000CA8C5 /* thirtywearsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirtywearsApp.swift; sourceTree = "<group>"; };
 		6961227A261CE663000CA8C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				6961228D261CE6CF000CA8C5 /* Clothing+CoreDataProperties.swift */,
 				69612278261CE663000CA8C5 /* thirtywearsApp.swift */,
 				6961227A261CE663000CA8C5 /* ContentView.swift */,
+				69611EE42624870A00F1121C /* SyncView.swift */,
 				69611EE02623694C00F1121C /* Settings.swift */,
 				69611EDC262361B800F1121C /* Profile.swift */,
 				69611EE226236FDE00F1121C /* About.swift */,
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69611EE52624870A00F1121C /* SyncView.swift in Sources */,
 				69612282261CE666000CA8C5 /* Persistence.swift in Sources */,
 				6961227B261CE663000CA8C5 /* ContentView.swift in Sources */,
 				69611EE12623694C00F1121C /* Settings.swift in Sources */,

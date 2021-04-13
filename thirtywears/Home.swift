@@ -11,9 +11,7 @@ struct Home: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var settings: Settings
 
-    @FetchRequest(entity: Clothing.entity(), sortDescriptors: [])
-
-    var clothing: FetchedResults<Clothing>
+    @FetchRequest(entity: Clothing.entity(), sortDescriptors: []) var clothing: FetchedResults<Clothing>
     @State var showItemSheet = false
     @State var image: Data = .init(count: 0)
     @State var goToHome = false

@@ -9,12 +9,12 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(entity: Clothing.entity(), sortDescriptors: [])
-    var clothing: FetchedResults<Clothing>
+    
+//    @Environment(\.managedObjectContext) private var viewContext
+//
+//    @FetchRequest(entity: Clothing.entity(), sortDescriptors: [])
+//    var clothing: FetchedResults<Clothing>
     var settings = Settings()
-
     @State var goToHome = false
     
     var body: some View {
@@ -27,12 +27,14 @@ struct ContentView: View {
                                     Label("Menu", systemImage: "house")
                                 }
                                 .environmentObject(settings)
+                    
 
                             Analytics()
                                 .tabItem {
                                     Label("Analytics", systemImage: "sum")
                                 }
                                 .environmentObject(settings)
+                    
                     
                             Profile()
                                 .tabItem {

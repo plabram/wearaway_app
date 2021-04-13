@@ -21,6 +21,8 @@ extension Clothing {
     @NSManaged public var cost: Int16
     @NSManaged public var type: String
     @NSManaged public var image: Data
+    
+    
     public var costPerWear: String {
         get {
             if (self.cost > 0 && self.wears > 0) {
@@ -101,3 +103,21 @@ func getTotalType(itemType: String) -> Int {
    return countOfItems
 }
 
+
+//func avCostPerWear(costs: [Int], wears: [Int]) -> Int {
+//   var countOfItems: Int = 0
+//   let context = PersistenceController.shared.container.viewContext
+//
+//   let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
+//
+//   clothingFetchRequest.predicate = NSPredicate(format: "type == %@", "\(itemType)")
+//
+//   do {
+//      countOfItems = try context.count(for: clothingFetchRequest)
+//      print (countOfItems)
+//   }
+//   catch {
+//      print (error)
+//   }
+//   return countOfItems
+//}

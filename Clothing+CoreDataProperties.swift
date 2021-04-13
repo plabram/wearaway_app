@@ -27,11 +27,11 @@ extension Clothing {
         get {
             if (self.cost > 0 && self.wears > 0) {
                 let calcValue = cost / wears
-                let newValue = String("\(calcValue)")
+                let newValue = String("Cost per wear: \(calcValue)")
                 return newValue
             }
             else if (self.cost > 0 && self.wears == 0) {
-                return "0"
+                return String("Cost: \(self.cost)")
             }
             else {
                 return "add cost"
@@ -104,20 +104,3 @@ func getTotalType(itemType: String) -> Int {
 }
 
 
-//func avCostPerWear(costs: [Int], wears: [Int]) -> Int {
-//   var countOfItems: Int = 0
-//   let context = PersistenceController.shared.container.viewContext
-//
-//   let clothingFetchRequest: NSFetchRequest<Clothing> = Clothing.fetchRequest()
-//
-//   clothingFetchRequest.predicate = NSPredicate(format: "type == %@", "\(itemType)")
-//
-//   do {
-//      countOfItems = try context.count(for: clothingFetchRequest)
-//      print (countOfItems)
-//   }
-//   catch {
-//      print (error)
-//   }
-//   return countOfItems
-//}

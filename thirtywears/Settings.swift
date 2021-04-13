@@ -16,8 +16,10 @@ class Settings: ObservableObject {
         return f
     }()
     
+    
     init() {
         self.settingsThreshold = 5
         self.items = ["Dress", "Trousers", "Shoes", "Top", "Skirt"]
     }
+    
 }

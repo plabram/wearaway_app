@@ -64,7 +64,7 @@ struct Home: View {
                         Text("\(item.type): \(item.wears)")
                             .foregroundColor(item.wears < settings.settingsThreshold ? Color.red : Color.black)
                             .font(.caption)
-                        Text("Cost per wear: \(item.costPerWear) €")
+                        Text("\(item.costPerWear) €")
                             .foregroundColor(item.cost > 0 ? Color.black : Color.white)
                             .font(.caption)
 

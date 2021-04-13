@@ -38,29 +38,39 @@ struct Analytics: View {
                 }
                 Section(header: Text("Cost per Wear")) {
                     
-                    Text("Dresses: \(getAvCPW(wears: dresses.map { Int($0.wears) }, costs: dresses.map { Int($0.cost) }))")
+                    Text("Dresses: \(averageCostPerWear(wears: dresses.map { Int($0.wears) }, cost: dresses.map { Int($0.cost) }), specifier: "%.2f")")
                 }
             }
             }
         }
     }
     
-func getAvCPW(wears: [Int], costs: [Int]) -> Int {
-//    let sortedArray = {
-//    switch (wears, costs) {
-//    case(0, 0): return 0
-//    case(0, _): return costs / wears
-//    case(_, _): return costs / wears
-//    case(_, 0): return 0
-//    }
-//    }
-//    return sortedArray.reduce(0,+) / sortedArray.count
+func averageCostPerWear(wears: [Int], cost: [Int]) -> Float {
+
+
+var found: [Int] = []
+
+for i in 0 ..< cost.count {
+    if cost[i] == 0 {
+        found.append(i)
+    }
+}
+
+    let wearsReduced = wears
+    .enumerated()
+    .filter { !found.contains($0.offset) }
+    .map { $0.element }
+print(wearsReduced)
+
+    let costReduced = cost
+    .enumerated()
+    .filter { !found.contains($0.offset) }
+    .map { $0.element }
+print(costReduced)
+
+    let averageCPW = Float(wearsReduced.reduce(0,+) / costReduced.reduce(0,+))
     
-//    let mergedArray = Dictionary(uniqueKeysWithValues: zip(wears, costs))
-//    let mergedArrayNoNil = mergedArray.filter { $0.value != 0 }.mapValues { $0 }
-//    let wears = mergedArrayNoNil.map { $0.0 }
-//    let costs = mergedArrayNoNil.map { $0.1 }
-    return costs.reduce(0,+) / wears.reduce(0,+)
+return averageCPW
 }
     
     struct Analytics_Previews: PreviewProvider{

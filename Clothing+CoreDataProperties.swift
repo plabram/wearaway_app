@@ -27,14 +27,14 @@ extension Clothing {
         get {
             if (self.cost > 0 && self.wears > 0) {
                 let calcValue = cost / wears
-                let newValue = String("Cost per wear: \(calcValue)")
+                let newValue = String("\(calcValue) € per wear")
                 return newValue
             }
             else if (self.cost > 0 && self.wears == 0) {
-                return String("Cost: \(self.cost)")
+                return String("Cost: \(self.cost) €")
             }
             else {
-                return "add cost"
+                return "Add cost"
             }
         }
         set {

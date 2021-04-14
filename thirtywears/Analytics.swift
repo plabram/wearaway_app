@@ -72,45 +72,6 @@ func pluralNames() -> String {
 }
 
 
-//func averageCostPerWear(wears: [Int], cost: [Int]) -> Float {
-//
-//
-//var found: [Int] = []
-//
-//for i in 0 ..< cost.count {
-//    if cost[i] == 0 {
-//        found.append(i)
-//    }
-//}
-//
-//    let wearsReduced = wears
-//    .enumerated()
-//    .filter { !found.contains($0.offset) }
-//    .map { $0.element }
-//
-//    let costReduced = cost
-//    .enumerated()
-//    .filter { !found.contains($0.offset) }
-//    .map { $0.element }
-//
-//    if (costReduced.reduce(0,+) > 0) {
-//    let averageCPW = Float(
-//        wearsReduced.reduce(0,+) /
-//        costReduced.reduce(0,+)
-//    )
-//
-//return averageCPW
-//}
-//    else {return 1}
-//    }
-//
-//    struct Analytics_Previews: PreviewProvider{
-//        static var previews: some View {
-//            Analytics()
-//                .environmentObject(Settings())
-//        }
-//    }
-
 func group(_ result : FetchedResults<Clothing>)-> [[Clothing]] {
         
     return Dictionary(grouping: result) { $0.type }

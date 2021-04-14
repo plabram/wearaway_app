@@ -12,9 +12,17 @@ struct About: View {
     var body: some View {
         NavigationView{
         VStack{
-            Text("Cheese slices cheese strings macaroni cheese. Boursin cow roquefort brie halloumi halloumi queso cheesy feet. Feta queso port-salut queso cheeseburger macaroni cheese cheeseburger paneer. Queso swiss.")
+            Text("""
+                This app was inspired by the book "Is it Really Green?", by Georgina Wilson Powell.
                 
-            Text("Paneer feta mascarpone. Parmesan roquefort hard cheese bavarian bergkase cut the cheese cottage cheese smelly cheese edam. Monterey jack pepper jack caerphilly croque monsieur croque monsieur lancashire brie halloumi. When the cheese comes out everybody's happy st. agur blue cheese stinking bishop danish fontina.")
+                In the book, she mentions that wearing an item at least 30 times can work off the carbon emissions created during production.
+                
+                We're not sure exactly how this number was achieved, but it's definitely true that making sure you get the most of your wardrobe is a great antidote to fast fashion. If you want to set a higher or lower target for yourself, you can change this from your Profile section.
+                
+                Cost per wear is another well-known way to make sure you get the most from your wardrobe. Are you surprised to see you spend a lot more on some items that others?
+                
+                Enjoy using the app!
+                """)
             Spacer()
     }
         .padding()

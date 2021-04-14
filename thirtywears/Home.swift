@@ -32,7 +32,7 @@ struct Home: View {
                 }
             }
         }
-                .listStyle(PlainListStyle())
+//                .listStyle(PlainListStyle())
                 .navigationTitle("My Wardrobe")
                 .navigationBarItems(trailing: Button(action: {
                     showItemSheet = true
@@ -46,7 +46,7 @@ struct Home: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 45, height: 45)
-                                .foregroundColor(.purple)
+                                .foregroundColor(Color("roseDust"))
                         }
                     }))
                 .sheet(isPresented: $showItemSheet) {

@@ -21,16 +21,16 @@ struct HeadlineTile: View {
     var body: some View {
             ZStack {
                 Rectangle()
-                    .fill(Color("lightGrey"))
+                    .fill(Color("teaGreen"))
                     .cornerRadius(6)
                     .frame(height: UIScreen.main.bounds.width / 4)
                 VStack(alignment: .leading) {
                     HStack {
                 Image(systemName: "leaf.fill")
-                    .foregroundColor(.green)
+                    .foregroundColor(Color("myrtleGreen"))
                 Text("Sustainability")
                     .font(.headline)
-                    .foregroundColor(.green)
+                    .foregroundColor(Color("myrtleGreen"))
                     .scaledToFill()
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)

@@ -13,8 +13,9 @@ struct thirtywearsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MotherView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(ViewRouter())
         }
     }
 }

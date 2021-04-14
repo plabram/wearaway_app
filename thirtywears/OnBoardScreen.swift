@@ -7,100 +7,66 @@
 
 import SwiftUI
 
-struct OnBoardScreen: View {
-    
-    @State var maxWidth = UIScreen.main.bounds.width - 100
-    @State var offset: CGFloat = 0
-    
+
+struct OnboardingView: View {
+    @EnvironmentObject var viewlaunch: ViewLaunch
     var body: some View {
-        ZStack{
-            VStack(alignment: .center){
-                Spacer()
-                Text("30 Wears")
-                    .font(.largeTitle)
+        VStack {
+            Spacer()
+                Text("What's New")
                     .fontWeight(.heavy)
-                    .foregroundColor(.purple)
-                Text("To work off clothes’ carbon emissions created during production, you need to wear them 30 times.")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .padding()
-                    .fixedSize(horizontal: false, vertical: true)
-                    .multilineTextAlignment(.center)
-                Image("clothes")
-                    .resizable()
-                    .frame(width: maxWidth + 50, height: maxWidth + 50)
-                Spacer()
+                    .font(.system(size: 50))
+                    .frame(width: 300, alignment: .leading)
+        
                 
-                ZStack {
-                    Capsule()
-                        .fill(Color.purple.opacity(0.5))
-                    
-                    Text("START")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .padding(.leading,30)
-                   
-                    HStack {
-                    Capsule()
-                        .fill(Color(.purple))
-                        .frame(width: calculateWidth()+65)
-                        Spacer(minLength: 0)
-                    }
-                    
-                    HStack{
-                        ZStack{
-                            Image(systemName: "chevron.right")
-                            Image(systemName: "chevron.right")
-                                .offset(x: -10)
-                        }
-                        .foregroundColor(.white)
-                        .offset(x: 5)
-                        .frame(width: 65, height: 65)
-                        .background(Color(.purple))
-                        .clipShape(Circle())
-                        .offset(x: offset)
-                        .gesture(DragGesture().onChanged(onChanged(value:)).onEnded(onEnd(value:)))
-                        Spacer()
-                        
-                    }
+                VStack(alignment: .leading) {
+                    NewDetail(image: "heart.fill", imageColor: .pink, title: "More Personalized", description: "Top Stories picked for you and recommendations from siri.")
+                    NewDetail(image: "paperclip", imageColor: .red, title: "New Spotlight Tab", description: "Discover great stories selected by our editors.")
+                    NewDetail(image: "play.rectangle.fill", imageColor: .blue, title: "Video In Today View", description: "The day's best videos, right in the News widget.")
+            }
+
+            Spacer()
+            
+            Button(action: {
+                UserDefaults.standard.set(true, forKey: "LaunchBefore")
+                withAnimation(){
+                    self.viewlaunch.currentPage = "ContentView"
                 }
-                .frame(width: maxWidth, height: 65)
-                .padding(.bottom)
-            }
-
-        
-            
-        }
-    }
-
-    func calculateWidth()->CGFloat{
-        let percent = offset / maxWidth
-        return percent * maxWidth
-    }
-    func onChanged(value: DragGesture.Value) {
-        if value.translation.width > 0 && offset <= maxWidth - 65 {
-            offset = value.translation.width
-        }
-        
-    }
-    
-    func onEnd(value: DragGesture.Value) {
-        withAnimation(Animation.easeOut(duration: 0.3)) {
-        
-        if offset > 180 {
-            offset = maxWidth - 65
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                NotificationCenter.default.post(name: NSNotification.Name("Success"), object: nil)
+            }){
+            Text("Next")
+                .foregroundColor(.white)
+                .font(.headline)
+                .frame(width: 350, height: 60)
+                .background(Color.blue)
+                .cornerRadius(15)
+                .padding(.top, 50)
             }
         }
-            else {
-            offset = 0
-            }
-        }
-    
     }
-    
 }
 
+struct NewDetail: View {
+    var image: String
+    var imageColor: Color
+    var title: String
+    var description: String
+
+    var body: some View {
+        HStack(alignment: .center) {
+            HStack {
+                Image(systemName: image)
+                    .font(.system(size: 50))
+                    .frame(width: 50)
+                    .foregroundColor(imageColor)
+                    .padding()
+
+                VStack(alignment: .leading) {
+                    Text(title).bold()
+                
+                    Text(description)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }.frame(width: 340, height: 100)
+        }
+    }
+}

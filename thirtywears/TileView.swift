@@ -50,11 +50,11 @@ struct TileView: View {
                 VStack(alignment: .leading) {
                 if (item.wears >= settings.settingsThreshold) {
                     Image(systemName: "leaf.fill")
-                    .foregroundColor(.green)
+                    .foregroundColor(Color("myrtleGreen"))
                 }
                 else {
                     Image(systemName: "leaf")
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("teaGreen"))
                 }
                 
                 }

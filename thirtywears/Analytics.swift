@@ -26,6 +26,12 @@ struct Analytics: View {
         getCount(threshold: settings.settingsThreshold)
      }
 
+    var avCostPerWear: Int {
+        if clothingWithCost.count > 0 {
+        return clothingWithCost.map { Int($0.cost) }.reduce(0,+) / clothingWithCost.count
+        }
+        else {return 0}
+    }
     
     var body: some View {
         NavigationView{
@@ -38,7 +44,7 @@ struct Analytics: View {
                 
                 }
                 }
-                Section(header: Text("Average cost per wear: \(clothingWithCost.map { Int($0.cost) }.reduce(0,+)/clothingWithCost.count) €")) {
+                Section(header: Text("Average cost per wear: \(avCostPerWear) €")) {
                     ForEach(group(clothing), id: \.self) { i in
                         Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
                                }
@@ -52,8 +58,8 @@ struct Analytics: View {
                         Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count) item(s) (no cost specified)")
                                }
                 }
-            }
-            }
+            }.navigationTitle("Reports")
+        }
         }
     }
 

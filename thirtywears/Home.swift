@@ -79,9 +79,13 @@ struct Home: View {
             .navigationBarItems(trailing: Button(action: {
                 showItemSheet = true
                 }, label: {
-                    Image(systemName: "camera.fill")
+                    ZStack {
+                        Circle()
+                          .fill(Color.purple)
+                        Image(systemName: "plus")
                         .imageScale(.large)
-                        .foregroundColor(.purple)
+                        .foregroundColor(.white)
+                    }
                 }))
             .sheet(isPresented: $showItemSheet) {
                 ItemSheet(settings: settings.self)

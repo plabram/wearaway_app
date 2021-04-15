@@ -35,6 +35,7 @@ struct Analytics: View {
     
     var body: some View {
         NavigationView{
+            
             List{
                 Section(header: Text("Sustainable Items: \(countOfItems) of \(clothing.count)")) {
                 ForEach(settings.items, id: \.self) {

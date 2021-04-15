@@ -1,36 +1,30 @@
 //
-//  HeadlineTile.swift
+//  TileStruct.swift
 //  thirtywears
 //
-//  Created by Penelope Labram on 14/4/21.
+//  Created by Penelope Labram on 15/4/21.
 //
 
 import SwiftUI
 import CoreData
 
-struct HeadlineTile: View {
+struct TileStruct: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var settings: Settings
-    @FetchRequest(entity: Clothing.entity(), sortDescriptors: []) var clothing: FetchedResults<Clothing>
-    
-    var countOfItems: Int {
-        getCount(threshold: settings.settingsThreshold)
-     }
+    var banner: Banner
     
     var body: some View {
             ZStack {
                 Rectangle()
-                    .fill(Color("teaGreen"))
+                    .fill(Color("\(banner.background)"))
                     .cornerRadius(6)
                     .frame(height: UIScreen.main.bounds.width / 4)
                 VStack(alignment: .leading) {
                     HStack {
-                Image(systemName: "leaf.fill")
-                    .foregroundColor(Color("myrtleGreen"))
-                Text("Sustainability")
+                Image(systemName: "\(banner.image)")
+                    .foregroundColor(Color("\(banner.colour)"))
+                Text("\(banner.text)")
                     .font(.headline)
-                    .foregroundColor(Color("myrtleGreen"))
+                    .foregroundColor(Color("\(banner.colour)"))
                     .scaledToFill()
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
@@ -38,7 +32,7 @@ struct HeadlineTile: View {
                     }
                 Spacer()
                     HStack(alignment: .bottom){
-                        Text("\(countOfItems) of \(clothing.count) items")
+                        Text("\(banner.description)")
                             .font(.title)
                             .scaledToFill()
                             .minimumScaleFactor(0.5)
@@ -52,8 +46,8 @@ struct HeadlineTile: View {
     }
 }
 
-struct HeadlineTile_Previews: PreviewProvider {
-    static var previews: some View {
-        HeadlineTile().environmentObject(Settings())
-    }
-}
+//struct TileStruct_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TileStruct(banner: Banner())
+//    }
+//}

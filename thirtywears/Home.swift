@@ -14,6 +14,10 @@ struct Home: View {
     @State var showItemSheet = false
     @State var goToHome = false
     
+    var countOfItems: Int {
+        getCount(threshold: settings.settingsThreshold)
+     }
+    
     private var columns: [GridItem] = [
             GridItem(.flexible()),
             GridItem(.flexible())
@@ -23,12 +27,17 @@ struct Home: View {
         
         NavigationView {
             VStack{
-                HeadlineTile()
+                TileStruct(banner: Banner(colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
             List {
             LazyVGrid(
                 columns: columns) {
+                if clothing.count > 0 {
                 ForEach(clothing) { n in
                     TileView(item: n)
+                }
+                }
+                else {
+                    Text("Click on the + button to start adding clothes").multilineTextAlignment(.center)
                 }
             }
         }

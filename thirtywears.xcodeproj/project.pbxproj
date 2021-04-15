@@ -15,10 +15,12 @@
 		69611EE326236FDE00F1121C /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EE226236FDE00F1121C /* About.swift */; };
 		69611EE52624870A00F1121C /* SyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EE42624870A00F1121C /* SyncView.swift */; };
 		69611EE72626DF0A00F1121C /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EE62626DF0900F1121C /* TileView.swift */; };
-		69611EE92626F9F100F1121C /* HeadlineTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EE82626F9F000F1121C /* HeadlineTile.swift */; };
 		69611EEF2627249200F1121C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EEE2627249200F1121C /* ViewRouter.swift */; };
 		69611EF12627278300F1121C /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EF02627278300F1121C /* MotherView.swift */; };
 		69611EF326272BDF00F1121C /* NewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EF226272BDF00F1121C /* NewDetail.swift */; };
+		69611F1726286FF700F1121C /* CameraImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F1626286FF700F1121C /* CameraImage.swift */; };
+		69611F192628781E00F1121C /* TileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F182628781E00F1121C /* TileStruct.swift */; };
+		69611F1B2628832500F1121C /* Banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F1A2628832500F1121C /* Banners.swift */; };
 		69612279261CE663000CA8C5 /* thirtywearsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69612278261CE663000CA8C5 /* thirtywearsApp.swift */; };
 		6961227B261CE663000CA8C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961227A261CE663000CA8C5 /* ContentView.swift */; };
 		6961227D261CE666000CA8C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6961227C261CE666000CA8C5 /* Assets.xcassets */; };
@@ -40,10 +42,12 @@
 		69611EE226236FDE00F1121C /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		69611EE42624870A00F1121C /* SyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncView.swift; sourceTree = "<group>"; };
 		69611EE62626DF0900F1121C /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
-		69611EE82626F9F000F1121C /* HeadlineTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineTile.swift; sourceTree = "<group>"; };
 		69611EEE2627249200F1121C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		69611EF02627278300F1121C /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		69611EF226272BDF00F1121C /* NewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetail.swift; sourceTree = "<group>"; };
+		69611F1626286FF700F1121C /* CameraImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImage.swift; sourceTree = "<group>"; };
+		69611F182628781E00F1121C /* TileStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileStruct.swift; sourceTree = "<group>"; };
+		69611F1A2628832500F1121C /* Banners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banners.swift; sourceTree = "<group>"; };
 		69612275261CE663000CA8C5 /* thirtywears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thirtywears.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69612278261CE663000CA8C5 /* thirtywearsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirtywearsApp.swift; sourceTree = "<group>"; };
 		6961227A261CE663000CA8C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,12 +105,14 @@
 				69611EDE262367D500F1121C /* Analytics.swift */,
 				690A0454261D0E1700CD5DDB /* Home.swift */,
 				690A0452261D08E800CD5DDB /* OnboardingView.swift */,
-				69611EE82626F9F000F1121C /* HeadlineTile.swift */,
+				69611F182628781E00F1121C /* TileStruct.swift */,
+				69611F1A2628832500F1121C /* Banners.swift */,
 				69611EF226272BDF00F1121C /* NewDetail.swift */,
 				69611EE62626DF0900F1121C /* TileView.swift */,
 				6961227C261CE666000CA8C5 /* Assets.xcassets */,
 				69612281261CE666000CA8C5 /* Persistence.swift */,
 				69612292261CE6E7000CA8C5 /* ImagePicker.swift */,
+				69611F1626286FF700F1121C /* CameraImage.swift */,
 				69612290261CE6DF000CA8C5 /* ItemSheet.swift */,
 				69612286261CE666000CA8C5 /* Info.plist */,
 				69612283261CE666000CA8C5 /* thirtywears.xcdatamodeld */,
@@ -196,13 +202,15 @@
 				69612282261CE666000CA8C5 /* Persistence.swift in Sources */,
 				69611EE72626DF0A00F1121C /* TileView.swift in Sources */,
 				6961227B261CE663000CA8C5 /* ContentView.swift in Sources */,
+				69611F1726286FF700F1121C /* CameraImage.swift in Sources */,
 				69611EE12623694C00F1121C /* Settings.swift in Sources */,
-				69611EE92626F9F100F1121C /* HeadlineTile.swift in Sources */,
+				69611F192628781E00F1121C /* TileStruct.swift in Sources */,
 				69611EDF262367D500F1121C /* Analytics.swift in Sources */,
 				690A0455261D0E1700CD5DDB /* Home.swift in Sources */,
 				690A0453261D08E800CD5DDB /* OnboardingView.swift in Sources */,
 				69611EEF2627249200F1121C /* ViewRouter.swift in Sources */,
 				69612291261CE6DF000CA8C5 /* ItemSheet.swift in Sources */,
+				69611F1B2628832500F1121C /* Banners.swift in Sources */,
 				6961228E261CE6CF000CA8C5 /* Clothing+CoreDataClass.swift in Sources */,
 				69612285261CE666000CA8C5 /* thirtywears.xcdatamodeld in Sources */,
 				69611EE326236FDE00F1121C /* About.swift in Sources */,

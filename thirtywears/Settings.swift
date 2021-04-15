@@ -18,8 +18,16 @@ class Settings: ObservableObject {
     
     
     init() {
-        self.settingsThreshold = 5
+        self.settingsThreshold = 30
         self.items = ["Dress", "Trousers", "Shoes", "Top", "Skirt"]
     }
     
+}
+
+class ImageTemp: ObservableObject {
+    var imageTemp: Data
+    
+    init(){
+        self.imageTemp = .init(count:0)
+    }
 }

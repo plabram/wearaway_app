@@ -33,8 +33,15 @@ struct Analytics: View {
         else {return 0}
     }
     
+    let banners = Bundle.main.decode("BannersData.json")
+    
+
+
+    
     var body: some View {
         NavigationView{
+            VStack{
+                TileStruct(banner: banners[settings.currentBanner])
             
             List{
                 Section(header: Text("Sustainable Items: \(countOfItems) of \(clothing.count)")) {
@@ -47,7 +54,7 @@ struct Analytics: View {
                 }
                 Section(header: Text("Average cost per wear: \(avCostPerWear) €")) {
                     ForEach(group(clothing), id: \.self) { i in
-                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
+                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / (i.map { $0.wears }.count) / (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
                                }
                 }
                 
@@ -60,6 +67,7 @@ struct Analytics: View {
                                }
                 }
             }.navigationTitle("Reports")
+            }
         }
         }
     }

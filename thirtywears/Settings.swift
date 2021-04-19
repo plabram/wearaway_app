@@ -15,6 +15,7 @@ class Settings: ObservableObject {
         f.numberStyle = .currency
         return f
     }()
+    @Published var currentBanner: Int = 0
     
     
     init() {

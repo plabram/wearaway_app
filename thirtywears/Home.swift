@@ -27,7 +27,7 @@ struct Home: View {
         
         NavigationView {
             VStack{
-                TileStruct(banner: Banner(colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
+                TileStruct(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
             List {
             LazyVGrid(
                 columns: columns) {
@@ -37,7 +37,26 @@ struct Home: View {
                 }
                 }
                 else {
+                    HStack {
+                    
                     Text("Click on the + button to start adding clothes").multilineTextAlignment(.center)
+                        Spacer()
+                    Button(action: {
+                            showItemSheet = true
+                            }, label: {
+                                ZStack {
+                                    Circle()
+                                        .foregroundColor(.white)
+                                        .frame(width: 50, height: 50)
+                                        .shadow(radius: 2)
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 45, height: 45)
+                                        .foregroundColor(Color("roseDust"))
+                                }
+                            })
+                    }
                 }
             }
         }

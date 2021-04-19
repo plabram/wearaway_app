@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
     var settings = Settings()
 
+
 var body: some View {
     
         ZStack{
@@ -20,9 +21,10 @@ var body: some View {
                                 Label("Wardrobe", systemImage: "house")
                             }
                             .environmentObject(settings)
+//                            .onAppear(perform: nextBanner(currentBanner: settings.currentBanner))
                 
 
-                        Analytics()
+                Analytics()
                             .tabItem {
                                 Label("Reports", systemImage: "sum")
                             }
@@ -39,4 +41,15 @@ var body: some View {
     
 }
 
+    func nextBanner(currentBanner: Int) -> Int {
+        let currentBanner = currentBanner + 1
+        if currentBanner >= 3 {
+            return {0}()
+        }
+        else {return currentBanner}
+    }
+    
 }
+
+
+

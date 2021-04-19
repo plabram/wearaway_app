@@ -33,10 +33,11 @@ struct TileStruct: View {
                 Spacer()
                     HStack(alignment: .bottom){
                         Text("\(banner.description)")
-                            .font(.title)
-                            .scaledToFill()
+                            .font(.body)
+//                            .scaledToFit()
                             .minimumScaleFactor(0.5)
-                            .lineLimit(1)
+                            .lineLimit(5)
+
                     }
                 }
                 .padding()
@@ -46,8 +47,8 @@ struct TileStruct: View {
     }
 }
 
-//struct TileStruct_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TileStruct(banner: Banner())
-//    }
-//}
+struct TileStruct_Previews: PreviewProvider {
+    static var previews: some View {
+        TileStruct(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Cost per Wear", description: "Which category has the highest cost per wear? You might need fewer of these items."))
+    }
+}

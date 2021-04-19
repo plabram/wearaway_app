@@ -1,0 +1,10 @@
+[
+    {
+    "id": "1",
+        "colour": "myrtleGreen",
+        "background": "teaGreen",
+        "image": "leaf.fill",
+        "text": "Cost per Wear",
+        "description": "Which category has the highest cost per wear? You might need fewer of these items."
+    }
+]

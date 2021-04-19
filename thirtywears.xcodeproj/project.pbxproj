@@ -21,6 +21,8 @@
 		69611F1726286FF700F1121C /* CameraImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F1626286FF700F1121C /* CameraImage.swift */; };
 		69611F192628781E00F1121C /* TileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F182628781E00F1121C /* TileStruct.swift */; };
 		69611F1B2628832500F1121C /* Banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F1A2628832500F1121C /* Banners.swift */; };
+		69611F1D2628B71900F1121C /* BannersData.json in Resources */ = {isa = PBXBuildFile; fileRef = 69611F1C2628B71900F1121C /* BannersData.json */; };
+		69611F1F2628B82900F1121C /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F1E2628B82900F1121C /* Bundle-Decodable.swift */; };
 		69612279261CE663000CA8C5 /* thirtywearsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69612278261CE663000CA8C5 /* thirtywearsApp.swift */; };
 		6961227B261CE663000CA8C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961227A261CE663000CA8C5 /* ContentView.swift */; };
 		6961227D261CE666000CA8C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6961227C261CE666000CA8C5 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		69611F1626286FF700F1121C /* CameraImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImage.swift; sourceTree = "<group>"; };
 		69611F182628781E00F1121C /* TileStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileStruct.swift; sourceTree = "<group>"; };
 		69611F1A2628832500F1121C /* Banners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banners.swift; sourceTree = "<group>"; };
+		69611F1C2628B71900F1121C /* BannersData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BannersData.json; sourceTree = "<group>"; };
+		69611F1E2628B82900F1121C /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		69612275261CE663000CA8C5 /* thirtywears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thirtywears.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69612278261CE663000CA8C5 /* thirtywearsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirtywearsApp.swift; sourceTree = "<group>"; };
 		6961227A261CE663000CA8C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,7 +111,9 @@
 				690A0452261D08E800CD5DDB /* OnboardingView.swift */,
 				69611F182628781E00F1121C /* TileStruct.swift */,
 				69611F1A2628832500F1121C /* Banners.swift */,
+				69611F1C2628B71900F1121C /* BannersData.json */,
 				69611EF226272BDF00F1121C /* NewDetail.swift */,
+				69611F1E2628B82900F1121C /* Bundle-Decodable.swift */,
 				69611EE62626DF0900F1121C /* TileView.swift */,
 				6961227C261CE666000CA8C5 /* Assets.xcassets */,
 				69612281261CE666000CA8C5 /* Persistence.swift */,
@@ -188,6 +194,7 @@
 			files = (
 				69612280261CE666000CA8C5 /* Preview Assets.xcassets in Resources */,
 				6961227D261CE666000CA8C5 /* Assets.xcassets in Resources */,
+				69611F1D2628B71900F1121C /* BannersData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +215,7 @@
 				69611EDF262367D500F1121C /* Analytics.swift in Sources */,
 				690A0455261D0E1700CD5DDB /* Home.swift in Sources */,
 				690A0453261D08E800CD5DDB /* OnboardingView.swift in Sources */,
+				69611F1F2628B82900F1121C /* Bundle-Decodable.swift in Sources */,
 				69611EEF2627249200F1121C /* ViewRouter.swift in Sources */,
 				69612291261CE6DF000CA8C5 /* ItemSheet.swift in Sources */,
 				69611F1B2628832500F1121C /* Banners.swift in Sources */,
@@ -348,6 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"thirtywears/Preview Content\"";
 				DEVELOPMENT_TEAM = ZRG49XMD68;
 				ENABLE_PREVIEWS = YES;
@@ -370,6 +379,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"thirtywears/Preview Content\"";
 				DEVELOPMENT_TEAM = ZRG49XMD68;
 				ENABLE_PREVIEWS = YES;

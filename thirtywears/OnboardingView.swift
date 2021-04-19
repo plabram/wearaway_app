@@ -12,7 +12,7 @@ struct OnboardingView: View {
     var body: some View {
         VStack {
             Spacer()
-                Text("30 Wears")
+                Text("30 Times")
                     .fontWeight(.heavy)
                     .font(.system(size: 50))
                     .frame(width: 300, alignment: .leading)

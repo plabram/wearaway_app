@@ -29,37 +29,21 @@ struct Home: View {
             VStack{
                 TileStruct(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
             List {
-            LazyVGrid(
-                columns: columns) {
                 if clothing.count > 0 {
+                    LazyVGrid(
+                        columns: columns) {
                 ForEach(clothing) { n in
                     TileView(item: n)
                 }
-                }
-                else {
-                    HStack {
-                    
-                    Text("Click on the + button to start adding clothes").multilineTextAlignment(.center)
-                        Spacer()
-                    Button(action: {
-                            showItemSheet = true
-                            }, label: {
-                                ZStack {
-                                    Circle()
-                                        .foregroundColor(.white)
-                                        .frame(width: 50, height: 50)
-                                        .shadow(radius: 2)
-                                    Image(systemName: "plus.circle.fill")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 45, height: 45)
-                                        .foregroundColor(Color("roseDust"))
-                                }
-                            })
                     }
                 }
+                else {
+                    Text("Your wardrobe is empty.")
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                }
             }
-        }
+//        }
 //                .listStyle(PlainListStyle())
                 .navigationTitle("My Wardrobe")
                 .navigationBarItems(trailing: Button(action: {

@@ -18,7 +18,6 @@
 		69611EEF2627249200F1121C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EEE2627249200F1121C /* ViewRouter.swift */; };
 		69611EF12627278300F1121C /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EF02627278300F1121C /* MotherView.swift */; };
 		69611EF326272BDF00F1121C /* NewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611EF226272BDF00F1121C /* NewDetail.swift */; };
-		69611F1726286FF700F1121C /* CameraImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F1626286FF700F1121C /* CameraImage.swift */; };
 		69611F192628781E00F1121C /* TileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F182628781E00F1121C /* TileStruct.swift */; };
 		69611F1B2628832500F1121C /* Banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611F1A2628832500F1121C /* Banners.swift */; };
 		69611F1D2628B71900F1121C /* BannersData.json in Resources */ = {isa = PBXBuildFile; fileRef = 69611F1C2628B71900F1121C /* BannersData.json */; };
@@ -47,7 +46,6 @@
 		69611EEE2627249200F1121C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		69611EF02627278300F1121C /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		69611EF226272BDF00F1121C /* NewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetail.swift; sourceTree = "<group>"; };
-		69611F1626286FF700F1121C /* CameraImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImage.swift; sourceTree = "<group>"; };
 		69611F182628781E00F1121C /* TileStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileStruct.swift; sourceTree = "<group>"; };
 		69611F1A2628832500F1121C /* Banners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banners.swift; sourceTree = "<group>"; };
 		69611F1C2628B71900F1121C /* BannersData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BannersData.json; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				6961227C261CE666000CA8C5 /* Assets.xcassets */,
 				69612281261CE666000CA8C5 /* Persistence.swift */,
 				69612292261CE6E7000CA8C5 /* ImagePicker.swift */,
-				69611F1626286FF700F1121C /* CameraImage.swift */,
 				69612290261CE6DF000CA8C5 /* ItemSheet.swift */,
 				69612286261CE666000CA8C5 /* Info.plist */,
 				69612283261CE666000CA8C5 /* thirtywears.xcdatamodeld */,
@@ -209,7 +206,6 @@
 				69612282261CE666000CA8C5 /* Persistence.swift in Sources */,
 				69611EE72626DF0A00F1121C /* TileView.swift in Sources */,
 				6961227B261CE663000CA8C5 /* ContentView.swift in Sources */,
-				69611F1726286FF700F1121C /* CameraImage.swift in Sources */,
 				69611EE12623694C00F1121C /* Settings.swift in Sources */,
 				69611F192628781E00F1121C /* TileStruct.swift in Sources */,
 				69611EDF262367D500F1121C /* Analytics.swift in Sources */,
@@ -356,7 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"thirtywears/Preview Content\"";
 				DEVELOPMENT_TEAM = ZRG49XMD68;
 				ENABLE_PREVIEWS = YES;
@@ -379,7 +375,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"thirtywears/Preview Content\"";
 				DEVELOPMENT_TEAM = ZRG49XMD68;
 				ENABLE_PREVIEWS = YES;

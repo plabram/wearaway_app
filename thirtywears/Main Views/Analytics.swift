@@ -28,7 +28,7 @@ struct Analytics: View {
 
     var avCostPerWear: Int {
         if clothingWithCost.count > 0 {
-        return clothingWithCost.map { Int($0.cost) }.reduce(0,+) / clothingWithCost.count
+        return clothingWithCost.map { Int($0.cost) }.reduce(0,+) / clothingWithCost.count / clothingWithCost.map { Int($0.wears) }.reduce(0,+)
         }
         else {return 0}
     }
@@ -41,9 +41,11 @@ struct Analytics: View {
     var body: some View {
         NavigationView{
             VStack{
-                TileStruct(banner: banners[settings.currentBanner])
+                
+            BannerView(banner: banners[settings.currentBanner])
             
             List{
+                
                 Section(header: Text("Sustainable Items: \(countOfItems) of \(clothing.count)")) {
                 ForEach(settings.items, id: \.self) {
                     let text = getTypeCount(threshold: settings.settingsThreshold, itemType: $0)
@@ -54,7 +56,7 @@ struct Analytics: View {
                 }
                 Section(header: Text("Average cost per wear: \(avCostPerWear) €")) {
                     ForEach(group(clothing), id: \.self) { i in
-                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / (i.map { $0.wears }.count) / (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
+                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / /*(i.map { Int($0.wears) }.reduce(0,+)) / */ (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
                                }
                 }
                 
@@ -66,8 +68,9 @@ struct Analytics: View {
                         Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count) item(s) (no cost specified)")
                                }
                 }
-            }.navigationTitle("Reports")
             }
+            }
+            .navigationTitle("Reports")
         }
         }
     }
@@ -94,3 +97,26 @@ func group(_ result : FetchedResults<Clothing>)-> [[Clothing]] {
             .map {$0.value}
         
     }
+
+//func andAv (clothes: [[Clothing]]) -> [Int] {
+//    var av = [Int]()
+//
+//    ForEach(clothes, id: \.self) { i in
+//
+//        let sumCost = i.map { Int($0.cost) }.reduce(0,+)
+//        let sumWears = i.map { Int($0.wears) }.reduce(0,+)
+//        let itemCount = i.map { $0.id }.count
+//        av.append(sumCost / sumWears / itemCount)
+//    }
+//
+//    return av
+//
+//}
+
+
+
+struct Analytics_Previews: PreviewProvider {
+    static var previews: some View {
+        Analytics().environmentObject(Settings())
+    }
+}

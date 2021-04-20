@@ -102,5 +102,3 @@ func getTotalType(itemType: String) -> Int {
    }
    return countOfItems
 }
-
-

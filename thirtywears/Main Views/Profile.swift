@@ -15,8 +15,11 @@ struct Profile: View {
             Form{
                 Section(header: Text("About")) {
                 NavigationLink(destination: About()) {
-                   Text("Why 30 wears?")
+                   Text("Why 30 wears exactly?")
                 }
+                NavigationLink(destination: PrivacyPolicy()) {
+                       Text("Privacy Policy")
+                    }
             }
                 Section(header: Text("Limits")) {
                     Stepper("Sustainability: \(settings.settingsThreshold) wears", value: $settings.settingsThreshold)

@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct TileStruct: View {
+struct BannerView: View {
     
     var banner: Banner
     
@@ -47,8 +47,8 @@ struct TileStruct: View {
     }
 }
 
-struct TileStruct_Previews: PreviewProvider {
+struct BannerView_Previews: PreviewProvider {
     static var previews: some View {
-        TileStruct(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Cost per Wear", description: "Which category has the highest cost per wear? You might need fewer of these items."))
+        BannerView(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Cost per Wear", description: "Which category has the highest cost per wear? You might need fewer of these items."))
     }
 }

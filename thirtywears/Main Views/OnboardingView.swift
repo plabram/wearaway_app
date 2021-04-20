@@ -12,7 +12,7 @@ struct OnboardingView: View {
     var body: some View {
         VStack {
             Spacer()
-                Text("30 Times")
+                Text("WearaWay")
                     .fontWeight(.heavy)
                     .font(.system(size: 50))
                     .frame(width: 300, alignment: .leading)
@@ -20,7 +20,7 @@ struct OnboardingView: View {
             VStack(alignment: .leading) {
                                 NewDetail(image: "leaf.fill", imageColor: Color("myrtleGreen"), title: "The 30 wears rule", description: "Wear clothes frequently to offset carbon omissions.")
                                 NewDetail(image: "plus.circle", imageColor: Color("roseDust"), title: "Build your wardrobe", description: "Add pictures of clothes to fill your wardrobe.")
-                                NewDetail(image: "list.number", imageColor: Color("cadet"), title: "Build reports", description: "Get statistics on your dashboard and see cost per wear.")
+                                NewDetail(image: "list.number", imageColor: Color("cadet"), title: "Cost per wear analysis", description: "Get statistics and reports on your wardrobe ROI.")
                         }
             Spacer()
             Button("Continue") {
@@ -31,7 +31,23 @@ struct OnboardingView: View {
                 .frame(width: 350, height: 60)
                 .background(Color("roseDust"))
                 .cornerRadius(15)
-                .padding(.bottom, 50)
+            
+            VStack {
+                        Text("By tapping Continue, you agree to our ")
+                        HStack(spacing: 0) {
+                            Link("Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                            Text(" and ")
+                            NavigationLink(destination: PrivacyPolicy()) {
+                               Text("Privacy Policy")
+                            }
+//                            }
+                            Text(".")
+                        }
+            }
+            .font(.footnote)
+            .padding(EdgeInsets(top: 3, leading: 0, bottom: 40, trailing: 0))
+            .multilineTextAlignment(.center)
+
         }
         .frame(minWidth: 100, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
         .background(Color("teaGreen"))

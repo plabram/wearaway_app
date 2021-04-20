@@ -13,7 +13,7 @@ struct About: View {
         NavigationView{
         VStack{
             Text("""
-                This app was inspired by the book "Is it Really Green?", by Georgina Wilson Powell.
+                WearaWay was inspired by the book "Is it Really Green?", by Georgina Wilson Powell.
                 
                 In the book, she mentions that wearing an item at least 30 times can work off the carbon emissions created during production.
                 

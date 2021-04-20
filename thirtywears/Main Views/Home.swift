@@ -27,7 +27,7 @@ struct Home: View {
         
         NavigationView {
             VStack{
-                TileStruct(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
+                BannerView(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
             List {
                 if clothing.count > 0 {
                     LazyVGrid(

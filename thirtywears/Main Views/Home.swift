@@ -22,13 +22,15 @@ struct Home: View {
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
-    
+
     var body: some View {
         
         NavigationView {
             VStack{
                 BannerView(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
             List {
+
                 if clothing.count > 0 {
                     LazyVGrid(
                         columns: columns) {
@@ -44,7 +46,7 @@ struct Home: View {
                         .multilineTextAlignment(.center)
                 }
             }
-                .listStyle(PlainListStyle())
+            .listStyle(PlainListStyle())
                 .navigationTitle("My Wardrobe")
                 .navigationBarItems(leading: EditButton(), trailing: Button(action: {
                     showItemSheet = true

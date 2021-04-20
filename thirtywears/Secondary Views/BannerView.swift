@@ -11,6 +11,7 @@ import CoreData
 struct BannerView: View {
     
     var banner: Banner
+
     
     var body: some View {
             ZStack {
@@ -43,7 +44,7 @@ struct BannerView: View {
                 .padding()
                 .frame(height: UIScreen.main.bounds.width / 4)
 
-            }.padding()
+            }
     }
 }
 

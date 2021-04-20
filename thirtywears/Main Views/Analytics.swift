@@ -43,6 +43,7 @@ struct Analytics: View {
             VStack{
                 
             BannerView(banner: banners[settings.currentBanner])
+                .padding()
             
             List{
                 

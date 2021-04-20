@@ -9,20 +9,23 @@ import SwiftUI
 
 struct Profile: View {
     @EnvironmentObject var settings: Settings
+    init() {
+         UITableView.appearance().backgroundColor = UIColor(Color.white)
+      }
     
     var body: some View {
         NavigationView{
             Form{
                 Section(header: Text("About")) {
                 NavigationLink(destination: About()) {
-                   Text("Why 30 wears exactly?")
+                   Text("Why exactly 30 wears?")
                 }
                 NavigationLink(destination: PrivacyPolicy()) {
                        Text("Privacy Policy")
                     }
             }
-                Section(header: Text("Limits")) {
-                    Stepper("Sustainability: \(settings.settingsThreshold) wears", value: $settings.settingsThreshold)
+                Section(header: Text("Sustainability Limit")) {
+                    Stepper("\(settings.settingsThreshold) wears", value: $settings.settingsThreshold)
             }
             }
             .navigationTitle("Profile")

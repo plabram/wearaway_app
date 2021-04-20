@@ -24,13 +24,11 @@ struct Home: View {
         ]
 
     var body: some View {
-        
+  
         NavigationView {
             VStack{
-                BannerView(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
-            List {
-
+            BannerView(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
+            ScrollView {
                 if clothing.count > 0 {
                     LazyVGrid(
                         columns: columns) {
@@ -45,28 +43,27 @@ struct Home: View {
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                 }
+            }.padding()
             }
-            .listStyle(PlainListStyle())
-                .navigationTitle("My Wardrobe")
-                .navigationBarItems(leading: EditButton(), trailing: Button(action: {
-                    showItemSheet = true
-                    }, label: {
-                        ZStack {
-                            Circle()
-                                .foregroundColor(.white)
-                                .frame(width: 50, height: 50)
-                                .shadow(radius: 2)
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 45, height: 45)
-                                .foregroundColor(Color("roseDust"))
-                        }
-                    }))
-                .sheet(isPresented: $showItemSheet) {
-                    ItemSheet(settings: settings.self)
+            .navigationTitle("My Wardrobe")
+            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+                showItemSheet = true
+                }, label: {
+                    ZStack {
+                        Circle()
+                            .foregroundColor(.white)
+                            .frame(width: 50, height: 50)
+                            .shadow(radius: 2)
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                            .foregroundColor(Color("roseDust"))
                     }
-            }
+                }))
+            .sheet(isPresented: $showItemSheet) {
+                ItemSheet(settings: settings.self)
+                }
         }
     }
     

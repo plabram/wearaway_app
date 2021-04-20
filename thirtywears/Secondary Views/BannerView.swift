@@ -45,6 +45,7 @@ struct BannerView: View {
                 .frame(height: UIScreen.main.bounds.width / 4)
 
             }
+            .padding()
     }
 }
 

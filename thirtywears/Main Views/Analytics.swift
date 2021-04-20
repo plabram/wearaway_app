@@ -35,15 +35,16 @@ struct Analytics: View {
     
     let banners = Bundle.main.decode("BannersData.json")
     
+    init() {
+         UITableView.appearance().backgroundColor = UIColor(Color.white)
+      }
 
-
-    
     var body: some View {
+        
         NavigationView{
             VStack{
                 
             BannerView(banner: banners[settings.currentBanner])
-                .padding()
             
             List{
                 
@@ -79,7 +80,7 @@ struct Analytics: View {
                                }
                 }
             }
-            .listStyle(PlainListStyle())
+//            .listStyle(PlainListStyle())
             }
             .navigationTitle("Reports")
         }
@@ -125,21 +126,21 @@ func andAv (clothes: [[Clothing]]) -> [String] {
     
 }
 
-//func andAv (clothes: [[Clothing]]) -> [Int] {
-//    var av = [Int]()
-//
-//    ForEach(clothes, id: \.self) { i in
-//
+//func maxScore (clothes: [[Clothing]]) -> [Score] {
+//    
+//    let averages: [Score] = clothes.map { i in
+//        
 //        let sumCost = i.map { Int($0.cost) }.reduce(0,+)
 //        let sumWears = i.map { Int($0.wears) }.reduce(0,+)
-//        let itemCount = i.map { $0.id }.count
-//        av.append(sumCost / sumWears / itemCount)
+//        let itemCount = i.count
+//        let av = sumCost / (sumWears>0 ? sumWears : 1) / itemCount
+//        let type = i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()
+//        return Score(type: type, avScore: av)
 //    }
-//
-//    return av
-//
+//    
+//    return averages
+//    
 //}
-
 
 
 struct Analytics_Previews: PreviewProvider {

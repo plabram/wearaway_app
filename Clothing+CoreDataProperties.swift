@@ -34,7 +34,7 @@ extension Clothing {
                 return String("Cost: \(self.cost) €")
             }
             else {
-                return "Add cost"
+                return "No cost added"
             }
         }
         set {

@@ -35,6 +35,7 @@ struct Home: View {
                 ForEach(clothing) { n in
                     TileView(item: n)
                 }
+                .onDelete(perform: deleteClothes)
                     }
                 }
                 else {
@@ -43,10 +44,9 @@ struct Home: View {
                         .multilineTextAlignment(.center)
                 }
             }
-//        }
-//                .listStyle(PlainListStyle())
+                .listStyle(PlainListStyle())
                 .navigationTitle("My Wardrobe")
-                .navigationBarItems(trailing: Button(action: {
+                .navigationBarItems(leading: EditButton(), trailing: Button(action: {
                     showItemSheet = true
                     }, label: {
                         ZStack {
@@ -66,5 +66,20 @@ struct Home: View {
                     }
             }
         }
+    }
+    
+    func deleteClothes(at offsets: IndexSet) {
+        for offset in offsets {
+            let clothes = clothing[offset]
+            viewContext.delete(clothes)
+        }
+        try? viewContext.save()
+    }
+    
+}
+
+struct Home_Previews: PreviewProvider {
+    static var previews: some View {
+        Home().environmentObject(Settings())
     }
 }

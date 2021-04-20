@@ -55,20 +55,30 @@ struct Analytics: View {
                 }
                 }
                 Section(header: Text("Average cost per wear: \(avCostPerWear) €")) {
-                    ForEach(group(clothing), id: \.self) { i in
-                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / /*(i.map { Int($0.wears) }.reduce(0,+)) / */ (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
-                               }
+                    
+                    
+                    ForEach(andAv(clothes: group(clothingWithCost)), id: \.self) { i in
+                        
+                        Text("\(i)")
+                    }
+                    
+                    
+//                    ForEach(group(clothing), id: \.self) { i in
+//                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / /*(i.map { Int($0.wears) }.reduce(0,+)) / */ (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
+//                               }
                 }
                 
                 Section(header: Text("Never worn: \(clothingNeverWornWithCost.count + clothingNeverWorn.count) of \(clothing.count)")) {
                     ForEach(group(clothingNeverWornWithCost), id: \.self) { i in
                         Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count) item(s) (\(i.map { Int($0.cost) }.reduce(0,+)) € )")
                                }
-                    ForEach(group(clothingNeverWorn), id: \.self) { i in
+                    ForEach(group(clothingNeverWorn), id: \.self) {
+                        i in
                         Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count) item(s) (no cost specified)")
                                }
                 }
             }
+            .listStyle(PlainListStyle())
             }
             .navigationTitle("Reports")
         }
@@ -97,6 +107,22 @@ func group(_ result : FetchedResults<Clothing>)-> [[Clothing]] {
             .map {$0.value}
         
     }
+
+func andAv (clothes: [[Clothing]]) -> [String] {
+    
+    let averages: [String] = clothes.map { i in
+        
+        let sumCost = i.map { Int($0.cost) }.reduce(0,+)
+        let sumWears = i.map { Int($0.wears) }.reduce(0,+)
+        let itemCount = i.count
+        let av = sumCost / (sumWears>0 ? sumWears : 1) / itemCount
+        let type = i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()
+        return String("\(type) : \(av)")
+    }
+    
+    return averages
+    
+}
 
 //func andAv (clothes: [[Clothing]]) -> [Int] {
 //    var av = [Int]()

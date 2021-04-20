@@ -14,6 +14,7 @@ struct Home: View {
     @State var showItemSheet = false
     @State var goToHome = false
     
+    
     var countOfItems: Int {
         getCount(threshold: settings.settingsThreshold)
      }
@@ -29,6 +30,8 @@ struct Home: View {
             VStack{
             BannerView(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
             ScrollView {
+//                Section(header:
+//                            EditButton().frame(maxWidth: .infinity, alignment: .trailing)) {
                 if clothing.count > 0 {
                     LazyVGrid(
                         columns: columns) {
@@ -42,11 +45,13 @@ struct Home: View {
                     Text("Your wardrobe is empty.")
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
-                }
+//                }
+                
+            }
             }.padding()
             }
             .navigationTitle("My Wardrobe")
-            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+            .navigationBarItems(/*leading: EditButton(), */trailing: Button(action: {
                 showItemSheet = true
                 }, label: {
                     ZStack {

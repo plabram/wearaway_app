@@ -20,7 +20,7 @@ struct OnboardingView: View {
             VStack(alignment: .leading) {
                                 NewDetail(image: "leaf.fill", imageColor: Color("myrtleGreen"), title: "The 30 wears rule", description: "Wear clothes frequently to offset carbon omissions.")
                                 NewDetail(image: "plus.circle", imageColor: Color("roseDust"), title: "Build your wardrobe", description: "Add pictures of clothes to fill your wardrobe.")
-                                NewDetail(image: "list.number", imageColor: Color("cadet"), title: "Cost per wear analysis", description: "Get statistics and reports on your wardrobe ROI.")
+                                NewDetail(image: "list.number", imageColor: Color("englishLavender"), title: "Cost per wear analysis", description: "Get statistics and reports on your wardrobe ROI.")
                         }
             Spacer()
             Button("Continue") {
@@ -35,10 +35,10 @@ struct OnboardingView: View {
             VStack {
                         Text("By tapping Continue, you agree to our ")
                         HStack(spacing: 0) {
-                            Link("Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                            Link("Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!).foregroundColor(Color("myrtleGreen"))
                             Text(" and ")
                             NavigationLink(destination: PrivacyPolicy()) {
-                               Text("Privacy Policy")
+                               Text("Privacy Policy").foregroundColor(Color("myrtleGreen"))
                             }
 //                            }
                             Text(".")

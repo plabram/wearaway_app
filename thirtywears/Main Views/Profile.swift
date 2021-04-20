@@ -16,15 +16,15 @@ struct Profile: View {
     var body: some View {
         NavigationView{
             Form{
-                Section(header: Text("About")) {
+                Section(header: Text("About").foregroundColor(Color("roseDust"))) {
                 NavigationLink(destination: About()) {
-                   Text("Why exactly 30 wears?")
+                   Text("Why exactly 30 times?")
                 }
                 NavigationLink(destination: PrivacyPolicy()) {
                        Text("Privacy Policy")
                     }
             }
-                Section(header: Text("Sustainability Limit")) {
+                Section(header: Text("Sustainability Limit").foregroundColor(Color("roseDust"))) {
                     Stepper("\(settings.settingsThreshold) wears", value: $settings.settingsThreshold)
             }
             }

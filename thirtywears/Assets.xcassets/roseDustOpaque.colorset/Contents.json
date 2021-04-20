@@ -4,10 +4,10 @@
       "color" : {
         "color-space" : "display-p3",
         "components" : {
-          "alpha" : "0.357",
-          "blue" : "0.514",
-          "green" : "0.294",
-          "red" : "0.619"
+          "alpha" : "0.595",
+          "blue" : "0.557",
+          "green" : "0.700",
+          "red" : "0.951"
         }
       },
       "idiom" : "universal"

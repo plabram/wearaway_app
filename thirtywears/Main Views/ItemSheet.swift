@@ -15,7 +15,7 @@ struct ItemSheet: View {
     var settings: Settings
     @State var selectedTypeIndex = 0
     @State var wears = 0
-    @State var cost = 0
+    @State var cost: Double = 0
     @State var imageTemp : Data = (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))!
     @State var show = false
     @State private var showingSheet = false
@@ -43,30 +43,30 @@ struct ItemSheet: View {
                     }
                 }
 
-                Spacer()
                 
                 Form {
                     Section(header: Text("Add a photo")) {
 
-                        Button("Select an Image from Gallery") {
+                        Button(action: {
                             self.show.toggle()
-                        }
+                        })
+                        {Text("Select from Gallery").foregroundColor(Color("myrtleGreen"))}
                         .sheet(isPresented: self.$show, content: {
                             ImagePicker(show: self.$show, image: self.$imageTemp)
                         })
                         
-                        Button("Take new picture") {
+                        Button(action: {
                             self.show.toggle()
-                        }
-                        
+                        })
+                        {Text("Take new picture").foregroundColor(Color("myrtleGreen"))}
                         .sheet(isPresented: self.$show, content: {
                             ImagePicker(sourceType: .camera, show: self.$show, image: self.$imageTemp)
+                        .foregroundColor(Color("myrtleGreen"))
                         })
                     }
-//                        .sheet(isPresented: self.$show, content: {
-//                            CameraImage(show: self.$show, image: self.$imageTemp)
-//                        })
-                        
+                Section(header: Text("Approx. cost: \(cost, specifier: "%.0f") €")) {
+                        Slider(value: $cost, in: 0...250)
+                }
                 Section(header: Text("Item Details")) {
                     Picker(selection: $selectedTypeIndex, label: Text("Type")) {
                         ForEach(0 ..< settings.items.count) {
@@ -75,17 +75,23 @@ struct ItemSheet: View {
                     }
                     
                     Stepper("\(wears) wears", value: $wears)
-                }
-                    Section(header: Text("Approx. cost (€)")) {
-//                        Stepper("\(cost)€", value: $cost)
-//                            .keyboardType(.decimalPad)
-                        
-                        Picker("Cost", selection: $cost) {
-                            ForEach(0..<200, id: \.self) {
-                                                Text("\($0) €")
-                                            }
-                                        }
+                    
+                    
+                    HStack(spacing: 0) {
+                        Spacer()
+                        Text("Old item? ")
+                        Button(action: {
+                            wears += 10
+                        })
+                        {
+                            Text("Add 10 wears")
+                                .foregroundColor(Color("myrtleGreen"))
+                                
+                        }
+                    }
+                    .font(.subheadline)
 
+                    
                 }
                 }
                 Button(action: {
@@ -105,10 +111,10 @@ struct ItemSheet: View {
                         }
                 }) {
                     Text("Send")
-                        .foregroundColor((self.imageTemp.count > 0) ? Color.white : Color.black)
+                        .foregroundColor((self.imageTemp != (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))) ? Color.white : Color.black)
                         .font(.headline)
                         .frame(width: 350, height: 60)
-                        .background((self.imageTemp.count > 0) ? Color("roseDust") : Color.gray)
+                        .background((self.imageTemp != (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))) ? Color("roseDust") : Color.gray)
                         .cornerRadius(15)
                         .padding(.bottom, 50)
                 }.disabled(imageTemp == (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))!)

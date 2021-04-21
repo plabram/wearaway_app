@@ -35,7 +35,6 @@ struct BannerView: View {
                     HStack(alignment: .bottom){
                         Text("\(banner.description)")
                             .font(.body)
-//                            .scaledToFit()
                             .minimumScaleFactor(0.5)
                             .lineLimit(5)
 

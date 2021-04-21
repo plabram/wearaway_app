@@ -32,9 +32,3 @@ class ImageTemp: ObservableObject {
         self.imageTemp = .init(count:0)
     }
 }
-
-//struct Score {
-//    let type: String
-//    let avScore: Int
-//}
-

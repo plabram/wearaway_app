@@ -18,7 +18,7 @@ extension Clothing {
 
     @NSManaged public var id: UUID?
     @NSManaged public var wears: Int16
-    @NSManaged public var cost: Int16
+    @NSManaged public var cost: Double
     @NSManaged public var type: String
     @NSManaged public var image: Data
     
@@ -26,8 +26,9 @@ extension Clothing {
     public var costPerWear: String {
         get {
             if (self.cost > 0 && self.wears > 0) {
-                let calcValue = cost / wears
-                let newValue = String("\(calcValue) € per wear")
+                let calcValue = cost / Double(wears)
+                let newValueRaw = String(format: "%.2f", calcValue)
+                let newValue = String("\(newValueRaw) € per wear")
                 return newValue
             }
             else if (self.cost > 0 && self.wears == 0) {

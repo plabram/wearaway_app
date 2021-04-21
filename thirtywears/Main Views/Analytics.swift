@@ -26,9 +26,9 @@ struct Analytics: View {
         getCount(threshold: settings.settingsThreshold)
      }
 
-    var avCostPerWear: Int {
+    var avCostPerWear: Double {
         if clothingWithCost.count > 0 {
-        return clothingWithCost.map { Int($0.cost) }.reduce(0,+) / clothingWithCost.count / clothingWithCost.map { Int($0.wears) }.reduce(0,+)
+            return clothingWithCost.map { $0.cost }.reduce(0,+) / Double(clothingWithCost.count) / clothingWithCost.map { Double($0.wears) }.reduce(0,+)
         }
         else {return 0}
     }
@@ -56,18 +56,13 @@ struct Analytics: View {
                 
                 }
                 }
-                Section(header: Text("Average cost per wear: \(avCostPerWear) €")) {
+                Section(header: Text("Average cost per wear: \(avCostPerWear, specifier: "%.2f") €")) {
                     
                     
                     ForEach(andAv(clothes: group(clothingWithCost)), id: \.self) { i in
                         
                         Text("\(i)")
                     }
-                    
-                    
-//                    ForEach(group(clothing), id: \.self) { i in
-//                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \((i.map { Int($0.cost) }.reduce(0,+)) / /*(i.map { Int($0.wears) }.reduce(0,+)) / */ (i.map { $0.id }.count)) € (\(i.map { $0.id }.count) items)")
-//                               }
                 }
                 
                 Section(header: Text("Never worn: \(clothingNeverWornWithCost.count + clothingNeverWorn.count) of \(clothing.count)")) {
@@ -80,7 +75,6 @@ struct Analytics: View {
                                }
                 }
             }
-//            .listStyle(PlainListStyle())
             }
             .navigationTitle("Reports")
         }
@@ -114,12 +108,13 @@ func andAv (clothes: [[Clothing]]) -> [String] {
     
     let averages: [String] = clothes.map { i in
         
-        let sumCost = i.map { Int($0.cost) }.reduce(0,+)
-        let sumWears = i.map { Int($0.wears) }.reduce(0,+)
-        let itemCount = i.count
+        let sumCost = i.map { $0.cost }.reduce(0,+)
+        let sumWears = i.map { Double($0.wears) }.reduce(0,+)
+        let itemCount = Double(i.count)
         let av = sumCost / (sumWears>0 ? sumWears : 1) / itemCount
+        let avString = String(format: "%.2f", av)
         let type = i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()
-        return String("\(type) : \(av)")
+        return String("\(type) : \(avString) €")
     }
     
     return averages

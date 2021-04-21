@@ -39,7 +39,7 @@ struct TileView: View {
                 .scaledToFill()
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
-            Text("\(item.costPerWear)")
+                    Text("\(item.costPerWear)")
                 .font(.subheadline)
                 .scaledToFill()
                 .minimumScaleFactor(0.5)

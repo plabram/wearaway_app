@@ -99,7 +99,7 @@ struct ItemSheet: View {
                     let newItem = Clothing(context: viewContext)
                     newItem.type = self.settings.items[self.selectedTypeIndex]
                     newItem.wears = Int16(self.wears)
-                    newItem.cost = Int16(self.cost)
+                    newItem.cost = self.cost
                     newItem.image = self.imageTemp
                     newItem.id = UUID()
                     do {

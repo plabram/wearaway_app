@@ -28,10 +28,11 @@ struct Home: View {
   
         NavigationView {
             VStack{
+                
             BannerView(banner: Banner(id: "0", colour: "myrtleGreen", background: "teaGreen", image: "leaf.fill", text: "Sustainability", description: "\(countOfItems) of \(clothing.count) items"))
+                
             ScrollView {
-//                Section(header:
-//                            EditButton().frame(maxWidth: .infinity, alignment: .trailing)) {
+
                 if clothing.count > 0 {
                     LazyVGrid(
                         columns: columns) {
@@ -45,13 +46,14 @@ struct Home: View {
                     Text("Your wardrobe is empty.")
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
-//                }
+                }
+            
+            }
+            .padding()
+            .navigationTitle("My Wardrobe")
                 
             }
-            }.padding()
-            }
-            .navigationTitle("My Wardrobe")
-            .navigationBarItems(/*leading: EditButton(), */trailing: Button(action: {
+            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
                 showItemSheet = true
                 }, label: {
                     ZStack {
@@ -65,11 +67,14 @@ struct Home: View {
                             .frame(width: 45, height: 45)
                             .foregroundColor(Color("roseDust"))
                     }
-                }))
+                })
+            )
             .sheet(isPresented: $showItemSheet) {
                 ItemSheet(settings: settings.self)
                 }
+            
         }
+        
     }
     
     func deleteClothes(at offsets: IndexSet) {

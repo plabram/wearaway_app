@@ -32,7 +32,8 @@ extension Clothing {
                 return newValue
             }
             else if (self.cost > 0 && self.wears == 0) {
-                return String("Cost: \(self.cost) €")
+                let costString = String(format: "%.2f", cost)
+                return String("Cost: \(costString) €")
             }
             else {
                 return "No cost added"

@@ -66,13 +66,22 @@ struct Analytics: View {
                 }
                 
                 Section(header: Text("Never worn: \(clothingNeverWornWithCost.count + clothingNeverWorn.count) of \(clothing.count)")) {
+                    
                     ForEach(group(clothingNeverWornWithCost), id: \.self) { i in
-                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count) item(s) (\(i.map { Int($0.cost) }.reduce(0,+)) € )")
+                        HStack{
+                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count)")
+                        Text(pluralise(stringBase: "item", items: i.map { $0.id }.count))
+                        Text("(\(i.map { Int($0.cost) }.reduce(0,+)) € )")
+                    }
                                }
                     ForEach(group(clothingNeverWorn), id: \.self) {
                         i in
-                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count) item(s) (no cost specified)")
+                        HStack{
+                        Text("\(i.map { $0.type }.prefix(1).joined(separator: ",").pluralNames()): \(i.map { $0.id }.count)")
+                        Text(pluralise(stringBase: "item", items: i.map { $0.id }.count))
+                        Text("- no cost specified")
                                }
+                    }
                 }
             }
             }
@@ -93,6 +102,16 @@ func pluralNames() -> String {
         return self + "s"
     }
 }
+}
+
+func pluralise(stringBase : String, items: Int) -> String {
+    if items == 1 {
+        return stringBase
+    }
+    else {
+        let newString = stringBase + "s"
+        return newString
+    }
 }
 
 

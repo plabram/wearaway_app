@@ -13,12 +13,12 @@ struct TileView: View {
     @ObservedObject var item: Clothing
     @EnvironmentObject var settings: Settings
     @Environment(\.managedObjectContext) private var viewContext
-    @State var image: Data = .init(count: 0)
+    @State var image: Data /*= .init(count: 0)*/
 
     
     var body: some View {
         VStack {
-            Image(uiImage: UIImage(data: item.image ?? self.image)!)
+            Image(data: item.image)?
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .border(Color("lightGrey"))
@@ -54,7 +54,7 @@ struct TileView: View {
                 }
                 else {
                     Image(systemName: "leaf")
-                        .foregroundColor(Color("teaGreen"))
+                        .foregroundColor(Color("myrtleGreen"))
                 }
                 
                 }
@@ -77,7 +77,18 @@ struct TileView_Previews: PreviewProvider {
         item.image = (UIImage(named: "clothes")?.pngData()!)!
 
         return NavigationView {
-            TileView(item: item).environmentObject(Settings())
+            TileView(item: item, image: item.image).environmentObject(Settings())
         }
+    }
+}
+
+extension Image {
+
+    public init?(data: Data?) {
+        guard let data = data,
+            let uiImage = UIImage(data: data) else {
+                return nil
+        }
+        self = Image(uiImage: uiImage)
     }
 }

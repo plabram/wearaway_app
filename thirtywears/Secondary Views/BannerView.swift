@@ -17,7 +17,7 @@ struct BannerView: View {
             ZStack {
                 Rectangle()
                     .fill(Color("\(banner.background)"))
-                    .cornerRadius(6)
+                    .cornerRadius(8)
                     .frame(height: UIScreen.main.bounds.width / 4)
                 VStack(alignment: .leading) {
                     HStack {

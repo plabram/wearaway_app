@@ -13,6 +13,7 @@ struct Home: View {
     @FetchRequest(entity: Clothing.entity(), sortDescriptors: []) var clothing: FetchedResults<Clothing>
     @State var showItemSheet = false
     @State var goToHome = false
+    @State var isEditing = false
     
     
     var countOfItems: Int {
@@ -36,10 +37,34 @@ struct Home: View {
                 if clothing.count > 0 {
                     LazyVGrid(
                         columns: columns) {
-                ForEach(clothing) { n in
-                    TileView(item: n)
+                    ForEach(clothing.indices, id: \.self) { n in
+                        ZStack (alignment: .topTrailing) {
+                        TileView(item: clothing[n], image: clothing[n].image)
+                    
+                        if isEditing == true {
+                    Button(action : {
+                        deleteClothes(at: [n])
+                        print("item deleted")
+                    })
+                    {
+                        ZStack{
+                            Circle()
+                                .foregroundColor(.red)
+                                .frame(width: 40, height: 40)
+                                .padding(6)
+                                .shadow(radius: 2)
+                        Image(systemName: "trash.fill")
+                        .foregroundColor(.white)
+                        .padding(6)
+                        }
+                        
+                        
+                    }
+                        
+                        }
+                        }
                 }
-                .onDelete(perform: deleteClothes)
+//                .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
                     }
                 }
                 else {
@@ -47,20 +72,26 @@ struct Home: View {
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                 }
+                
             
             }
             .padding()
             .navigationTitle("My Wardrobe")
                 
             }
-            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+            .navigationBarItems(leading: Button(action: {
+                self.isEditing.toggle()
+            }) {
+                Text(isEditing ? "Done" : "Remove")
+                    .frame(width: 80, height: 40)
+            }, trailing: Button(action: {
                 showItemSheet = true
                 }, label: {
                     ZStack {
-                        Circle()
-                            .foregroundColor(.white)
-                            .frame(width: 50, height: 50)
-                            .shadow(radius: 2)
+//                        Circle()
+//                            .foregroundColor(.white)
+//                            .frame(width: 50, height: 50)
+//                            .shadow(radius: 2)
                         Image(systemName: "plus.circle.fill")
                             .resizable()
                             .aspectRatio(contentMode: .fit)

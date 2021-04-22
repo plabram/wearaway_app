@@ -11,7 +11,7 @@ struct PrivacyPolicy: View {
 
 var body: some View {
     NavigationView{
-    VStack{
+    ScrollView{
         Text("""
             TLDR: we collect as little information as possible (just enough to resolve any bugs or anything that might seriously impact your app experience). Where possible, we anonymise everything, or store it locally in your phone so we don't have access. We don't use your information for advertising.
             
@@ -21,7 +21,7 @@ var body: some View {
             .font(.title3)
             .padding()
         Text("""
-            This privacy policy (“Policy”) describes how the personally identifiable information (“Personal Information”) in the “30x” mobile application (“Mobile Application” or “Service”) is collected, protected and used.
+            This privacy policy (“Policy”) describes how the personally identifiable information (“Personal Information”) in the “WearaWay” mobile application (“Mobile Application” or “Service”) is collected, protected and used.
             
             It also describes the choices available to you regarding your Personal Information and how you can access and update this information. This Policy is a legally binding agreement between you (“User”, “you” or “your”) and this Mobile Application developer (“Operator”, “we”, “us” or “our”).
             

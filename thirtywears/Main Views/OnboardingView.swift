@@ -37,10 +37,8 @@ struct OnboardingView: View {
                         HStack(spacing: 0) {
                             Link("Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!).foregroundColor(Color("myrtleGreen"))
                             Text(" and ")
-                            NavigationLink(destination: PrivacyPolicy()) {
-                               Text("Privacy Policy").foregroundColor(Color("myrtleGreen"))
-                            }
-//                            }
+                            Link("Privacy Policy", destination: URL(string: "http://selfemployedinspain.com/wearaway-privacy-policy/")!)
+                                .foregroundColor(Color("myrtleGreen"))
                             Text(".")
                         }
             }

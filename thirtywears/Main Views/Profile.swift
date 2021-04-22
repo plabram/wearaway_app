@@ -10,10 +10,11 @@ import SwiftUI
 struct Profile: View {
     @EnvironmentObject var settings: Settings
     init() {
-         UITableView.appearance().backgroundColor = UIColor(Color.white)
+         UITableView.appearance().backgroundColor = .clear
       }
     
     var body: some View {
+        
         NavigationView{
             Form{
                 Section(header: Text("About").foregroundColor(Color("roseDust"))) {
@@ -29,6 +30,7 @@ struct Profile: View {
             }
             }
             .navigationTitle("Profile")
+//            .background(Color(.red))
         }
     }
     

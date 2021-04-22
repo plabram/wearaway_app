@@ -37,6 +37,11 @@ struct Home: View {
                 if clothing.count > 0 {
                     LazyVGrid(
                         columns: columns) {
+                        Section(footer:
+                                    Text("Tap clothes to add wears.")
+                                    .foregroundColor(.gray)
+                                    .padding()
+                        ) {
                     ForEach(clothing.indices, id: \.self) { n in
                         ZStack (alignment: .topTrailing) {
                         TileView(item: clothing[n], image: clothing[n].image)
@@ -64,6 +69,8 @@ struct Home: View {
                         }
                         }
                 }
+//                        section end:
+                    }
 //                .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
                     }
                 }

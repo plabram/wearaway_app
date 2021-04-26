@@ -30,8 +30,9 @@ struct Profile: View {
             }
             }
             .navigationTitle("Profile")
-//            .background(Color(.red))
+
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     struct Profile_Previews: PreviewProvider{

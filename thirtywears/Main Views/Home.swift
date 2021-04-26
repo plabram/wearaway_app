@@ -85,6 +85,7 @@ struct Home: View {
             .padding()
             .navigationTitle("My Wardrobe")
                 
+                
             }
             .navigationBarItems(leading: Button(action: {
                 self.isEditing.toggle()
@@ -112,6 +113,7 @@ struct Home: View {
                 }
             
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         
     }
     

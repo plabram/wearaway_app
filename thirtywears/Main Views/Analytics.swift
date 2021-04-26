@@ -86,7 +86,9 @@ struct Analytics: View {
             }
             }
             .navigationTitle("Reports")
+            
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 

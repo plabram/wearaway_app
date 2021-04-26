@@ -20,7 +20,7 @@ class Settings: ObservableObject {
     
     init() {
         self.settingsThreshold = 30
-        self.items = ["Dress", "Trousers", "Shoes", "Top", "Skirt"]
+        self.items = ["Dress", "Trousers", "Shoes", "Top/Blouse", "Skirt", "Jumper", "Jacket", "Leggings", "T-Shirt"]
     }
     
 }

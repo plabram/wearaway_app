@@ -60,7 +60,7 @@ struct ItemSheet: View {
                         })
                         {Text("Take new picture").foregroundColor(Color("myrtleGreen"))}
                         .sheet(isPresented: self.$show, content: {
-                            ImagePicker(sourceType: .camera, show: self.$show, image: self.$imageTemp)
+                            ImagePicker(/*sourceType: .camera, */show: self.$show, image: self.$imageTemp)
                         .foregroundColor(Color("myrtleGreen"))
                         })
                     }

@@ -37,13 +37,15 @@ struct TileView: View {
             Text("\(item.type): \(item.wears) wears")
                 .font(.headline)
                 .scaledToFill()
+                .fixedSize(horizontal: false, vertical: true)
                 .minimumScaleFactor(0.5)
-                .lineLimit(1)
+                .lineLimit(nil)
                     Text("\(item.costPerWear)")
                 .font(.subheadline)
+                .fixedSize(horizontal: false, vertical: true)
                 .scaledToFill()
                 .minimumScaleFactor(0.5)
-                .lineLimit(1)
+                .lineLimit(3)
                 .foregroundColor(.gray)
                 }
                 Spacer()
@@ -74,7 +76,7 @@ struct TileView_Previews: PreviewProvider {
         item.type = "Dress"
         item.wears = 4
         item.cost = 3
-        item.image = (UIImage(named: "clothes")?.pngData()!)!
+        item.image = (UIImage(systemName: "camera.fill")?.pngData()!)!
 
         return NavigationView {
             TileView(item: item, image: item.image).environmentObject(Settings())

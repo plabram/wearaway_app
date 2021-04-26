@@ -10,7 +10,7 @@ import SwiftUI
 struct Home: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var settings: Settings
-    @FetchRequest(entity: Clothing.entity(), sortDescriptors: []) var clothing: FetchedResults<Clothing>
+    @FetchRequest(entity: Clothing.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Clothing.wears, ascending: true)]) var clothing: FetchedResults<Clothing>
     @State var showItemSheet = false
     @State var goToHome = false
     @State var isEditing = false

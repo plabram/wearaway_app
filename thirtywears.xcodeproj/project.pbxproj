@@ -31,6 +31,7 @@
 		6961228E261CE6CF000CA8C5 /* Clothing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961228C261CE6CF000CA8C5 /* Clothing+CoreDataClass.swift */; };
 		6961228F261CE6CF000CA8C5 /* Clothing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961228D261CE6CF000CA8C5 /* Clothing+CoreDataProperties.swift */; };
 		69612293261CE6E7000CA8C5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69612292261CE6E7000CA8C5 /* ImagePicker.swift */; };
+		69738F17263848300058C472 /* PhotoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69738F16263848300058C472 /* PhotoButtonView.swift */; };
 		699AA859262ED3CE00F54621 /* ItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AA858262ED3CE00F54621 /* ItemSheet.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		6961228C261CE6CF000CA8C5 /* Clothing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clothing+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		6961228D261CE6CF000CA8C5 /* Clothing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clothing+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		69612292261CE6E7000CA8C5 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = ../../photosaver/photosaver/ImagePicker.swift; sourceTree = "<group>"; };
+		69738F16263848300058C472 /* PhotoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoButtonView.swift; sourceTree = "<group>"; };
 		699AA858262ED3CE00F54621 /* ItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +105,6 @@
 				69611EE02623694C00F1121C /* Settings.swift */,
 				69611F1A2628832500F1121C /* Banners.swift */,
 				69611F1C2628B71900F1121C /* BannersData.json */,
-				69611EF226272BDF00F1121C /* NewDetail.swift */,
 				69611F1E2628B82900F1121C /* Bundle-Decodable.swift */,
 				6961227C261CE666000CA8C5 /* Assets.xcassets */,
 				69612281261CE666000CA8C5 /* Persistence.swift */,
@@ -151,7 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				69611F182628781E00F1121C /* BannerView.swift */,
+				69738F16263848300058C472 /* PhotoButtonView.swift */,
 				69611EE62626DF0900F1121C /* TileView.swift */,
+				69611EF226272BDF00F1121C /* NewDetail.swift */,
 			);
 			path = "Secondary Views";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				69611EDF262367D500F1121C /* Analytics.swift in Sources */,
 				690A0455261D0E1700CD5DDB /* Home.swift in Sources */,
 				690A0453261D08E800CD5DDB /* OnboardingView.swift in Sources */,
+				69738F17263848300058C472 /* PhotoButtonView.swift in Sources */,
 				69611F1F2628B82900F1121C /* Bundle-Decodable.swift in Sources */,
 				69611EEF2627249200F1121C /* ViewRouter.swift in Sources */,
 				699AA859262ED3CE00F54621 /* ItemSheet.swift in Sources */,

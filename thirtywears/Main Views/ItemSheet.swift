@@ -13,57 +13,20 @@ struct ItemSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment (\.presentationMode) var presentationMode
     var settings: Settings
+    
     @State var selectedTypeIndex = 0
     @State var wears = 0
     @State var cost: Double = 0
-    @State var imageTemp : Data = (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))!
-    @State var show = false
-    @State private var showingSheet = false
+    @State var imageTemp : Data = (UIImage(systemName: "photo")?.jpegData(compressionQuality: 1))!
+    
     
     var body: some View {
         NavigationView {
             VStack {
-                ZStack{
-                    Rectangle()
-                        .fill(Color.white)
-                        .frame(width: 115, height: 115)
-                if (self.imageTemp != (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))!) {
-                    Image(uiImage: UIImage(data: self.imageTemp)!)
-                        .renderingMode(.original)
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(6)
-                }
-                else {
-                    Image(uiImage: UIImage(data: imageTemp)!)
-                        .font(.system(size: 55))
-                        .foregroundColor(.gray)
-                        .frame(width: 100, height: 50)
-                        .padding()
-                    }
-                }
-
+                
+                PhotoButtonView(imageTemp: $imageTemp)
                 
                 Form {
-                    Section(header: Text("Add a photo")) {
-
-                        Button(action: {
-                            self.show.toggle()
-                        })
-                        {Text("Select from Gallery").foregroundColor(Color("myrtleGreen"))}
-                        .sheet(isPresented: self.$show, content: {
-                            ImagePicker(show: self.$show, image: self.$imageTemp)
-                        })
-                        
-                        Button(action: {
-                            self.show.toggle()
-                        })
-                        {Text("Take new picture").foregroundColor(Color("myrtleGreen"))}
-                        .sheet(isPresented: self.$show, content: {
-                            ImagePicker(/*sourceType: .camera, */show: self.$show, image: self.$imageTemp)
-                        .foregroundColor(Color("myrtleGreen"))
-                        })
-                    }
                 Section(header: Text("Approx. cost: \(cost, specifier: "%.0f") €")) {
                         Slider(value: $cost, in: 0...250)
                 }
@@ -94,6 +57,8 @@ struct ItemSheet: View {
                     
                 }
                 }
+                
+                
                 Button(action: {
                     guard self.imageTemp != nil else {return}
                     let newItem = Clothing(context: viewContext)
@@ -111,18 +76,24 @@ struct ItemSheet: View {
                         }
                 }) {
                     Text("Send")
-                        .foregroundColor((self.imageTemp != (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))) ? Color.white : Color.black)
+                        .foregroundColor((self.imageTemp != (UIImage(systemName: "photo")?.jpegData(compressionQuality: 1))) ? Color.white : Color.black)
                         .font(.headline)
                         .frame(width: 350, height: 60)
-                        .background((self.imageTemp != (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))) ? Color("roseDust") : Color.gray)
+                        .background((self.imageTemp != (UIImage(systemName: "photo")?.jpegData(compressionQuality: 1))) ? Color("roseDust") : Color.gray)
                         .cornerRadius(15)
                         .padding(.bottom, 50)
-                }.disabled(imageTemp == (UIImage(systemName: "photo.on.rectangle.angled")?.jpegData(compressionQuality: 1))!)
+                    
+                }
+                
+                
+                .disabled(imageTemp == (UIImage(systemName: "photo")?.jpegData(compressionQuality: 1))!)
                 .navigationTitle("Add Clothes")
             }
         }
     }
 }
+
+
 
 //struct ItemSheet_Previews: PreviewProvider {
 //    static var previews: some View {

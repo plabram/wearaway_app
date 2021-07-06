@@ -13,17 +13,18 @@
 //    
 //    var body: some View {
 //        VStack{
-//        Text("""
+//            Image(systemName: "leaf.fill")
+//                .foregroundColor(Color("teaGreen"))
+//            Text("""
 //            Congrats! You just added your first item.
 //            
-//            Now let's see if you can wear it \(settings.settingsThreshold) times
+//            Wear it \(settings.settingsThreshold) times to make it sustainable.
 //            """)
-//        Button("Press to dismiss") {
+//        Button("Let's go!") {
 //            presentationMode.wrappedValue.dismiss()
 //                }
 //                .font(.title)
 //                .padding()
-//                .background(Color.black)
 //        }
 //    }
 //}

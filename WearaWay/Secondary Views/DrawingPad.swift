@@ -53,9 +53,9 @@ struct DrawingPad: View {
                             type = i.buttonType
                         }) {
                             Label {
-                                Text(i.name).foregroundColor(type == i.buttonType ? .black : .blue)
+                                Text(i.name).foregroundColor((type == i.buttonType && isDraw == true) ? .black : .blue)
                             } icon: {
-                                Image(systemName: i.icon).foregroundColor(type == i.buttonType ? .black : .blue)
+                                Image(systemName: i.icon).foregroundColor((type == i.buttonType && isDraw == true) ? .black : .blue)
                             }
                         }
                     }

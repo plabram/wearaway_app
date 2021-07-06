@@ -16,11 +16,15 @@ extension Clothing {
         return NSFetchRequest<Clothing>(entityName: "Clothing")
     }
 
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: UUID
     @NSManaged public var wears: Int16
     @NSManaged public var cost: Double
     @NSManaged public var type: String
     @NSManaged public var image: Data
+    
+//    var wrappedType: String {
+//        type ?? "Unknown"
+//    }
     
     
     public var costPerWear: String {

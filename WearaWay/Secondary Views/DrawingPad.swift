@@ -5,6 +5,8 @@
 //  Created by Penelope on 20/6/21.
 //
 
+//this is the canvas the user can use to draw a picture of their item of clothing
+
 import SwiftUI
 import PencilKit
 
@@ -20,8 +22,9 @@ struct DrawingPad: View {
     @State var canvas = PKCanvasView()
     @State var isDraw = true
     @State private var color = Color.black
-    @State var type : PKInkingTool.InkType = .marker
+    @State var type: PKInkingTool.InkType = .marker
     @Binding var imageTemp : Data
+    @Environment (\.presentationMode) var presentationMode
     
     var buttons: [drawButton] = [
         drawButton(name: "Pencil", isDraw: true, icon: "pencil", buttonType: .pencil),
@@ -79,6 +82,7 @@ struct DrawingPad: View {
     func SaveImage(){
         let drawingTemp = canvas.drawing.image(from:canvas.drawing.bounds, scale: 1)
         imageTemp = drawingTemp.pngData()!
+        presentationMode.wrappedValue.dismiss()
 
     }
 }

@@ -5,8 +5,25 @@
 //  Created by Penelope on 2/7/21.
 //
 
+//this is where users can modify an item of clothing. It's separated into two structs. ModifySheet creates a UUID filter that is passed through to FilteredList. This way in FilteredList the user only sees the specific item they want to edit.
+
 import SwiftUI
 import CoreData
+
+struct ModifySheet: View {
+
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var settings: Settings
+    @State var idFilter: UUID
+    var item: ClothingTemp
+
+ 
+    var body: some View {
+        VStack{
+            FilteredList(filter: idFilter, item: item).environment(\.managedObjectContext, viewContext)
+        }
+    }
+}
 
 struct FilteredList: View {
 //    @EnvironmentObject var settings: Settings
@@ -18,17 +35,10 @@ struct FilteredList: View {
     }
     @State var item: ClothingTemp
     
-//    @State var newSelectedTypeIndex = 0
-    @State var newWears: Int16 = 0
-    @State var newCost: Double = 0
-    @State var newImage: Data = (UIImage(systemName: "photo")?.jpegData(compressionQuality: 1))!
-//    @State var item: ClothingTemp
-    
     var body: some View {
         
         NavigationView{
             VStack {
-//                Text("\(item.wears)")
                 PhotoButtonView(imageTemp: $item.image)
             Form {
                 Section(header: Text("Approx. cost: \(item.cost, specifier: "%.0f") €")) {
@@ -36,7 +46,7 @@ struct FilteredList: View {
             }
             Section(header: Text("Item Details")) {
                 
-//                Picker(selection: $newSelectedTypeIndex, label: Text("Type")) {
+//                Picker(selection: $item.type, label: Text("Type")) {
 //                    ForEach(0 ..< settings.items.count) {
 //                        Text(self.settings.items[$0]).tag($0)
 //                    }
@@ -52,11 +62,11 @@ struct FilteredList: View {
                     items[0].wears = Int16(item.wears)
                     
                     do { try viewContext.save() } catch { print(error) }
-                    
                     presentationMode.wrappedValue.dismiss()
                     print("Item updated.")
                     
-                })
+                }
+                )
                 {Text("Save")
                     .foregroundColor(Color.white)
                     .font(.headline)

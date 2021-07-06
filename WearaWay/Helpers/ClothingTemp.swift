@@ -11,4 +11,5 @@ struct ClothingTemp {
     var wears: Int16
     var cost: Double
     var image: Data
+    var type: String
 }
